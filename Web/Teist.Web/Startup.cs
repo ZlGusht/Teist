@@ -18,7 +18,6 @@
     using Teist.Data.Seeding;
     using Teist.Services.Messaging;
     using Teist.Web.Infrastructure.Middlewares.Auth;
-    using Teist.Web.ViewModels.TodoItems;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics;
@@ -113,7 +112,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            AutoMapperConfig.RegisterMappings(typeof(TodoItemViewModel).GetTypeInfo().Assembly);
+            //AutoMapperConfig.RegisterMappings(typeof(TodoItemViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())

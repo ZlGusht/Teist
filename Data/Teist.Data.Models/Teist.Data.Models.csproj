@@ -15,6 +15,7 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta009" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Teist.Common\Teist.Common.csproj" />
     <ProjectReference Include="..\Teist.Data.Common\Teist.Data.Common.csproj" />
   </ItemGroup>
   
