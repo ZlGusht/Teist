@@ -2,9 +2,11 @@
 
 namespace Teist.Data.Repositories
 {
-    public class AlbumRepository: BaseRepository<Album>
+    class AlbumRepository : EfDeletableEntityRepository<Album>
     {
-        public AlbumRepository(TeistDbContext Data)
-            : base(Data) { }
+        public AlbumRepository(TeistDbContext context) : base(context)
+        {
+
+        }
     }
 }

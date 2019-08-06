@@ -1,10 +1,12 @@
-﻿namespace Teist.Data.Repositories
-{
-    using Teist.Data.Models;
+﻿using Teist.Data.Models;
 
-    public class ChartRepository : BaseRepository<Chart>
+namespace Teist.Data.Repositories
+{
+    class ChartRepository : EfDeletableEntityRepository<Chart>
     {
-        public ChartRepository(TeistDbContext Data)
-            : base(Data) { }
+        public ChartRepository(TeistDbContext context) : base(context)
+        {
+
+        }
     }
 }

@@ -1,10 +1,12 @@
-﻿namespace Teist.Data.Repositories
-{
-    using Teist.Data.Models;
+﻿using Teist.Data.Models;
 
-    public class ReviewRepository : BaseRepository<Review>
+namespace Teist.Data.Repositories
+{
+    class ReviewRepository : EfDeletableEntityRepository<Review>
     {
-        public ReviewRepository(TeistDbContext Data)
-            : base(Data) { }
+        public ReviewRepository(TeistDbContext context) : base(context)
+        {
+
+        }
     }
 }

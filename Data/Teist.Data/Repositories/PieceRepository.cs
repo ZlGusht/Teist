@@ -1,10 +1,12 @@
-﻿namespace Teist.Data.Repositories
-{
-    using Teist.Data.Models;
+﻿using Teist.Data.Models;
 
-    public class PieceRepository : BaseRepository<Piece>
+namespace Teist.Data.Repositories
+{
+    class PieceRepository : EfDeletableEntityRepository<Piece>
     {
-        public PieceRepository(TeistDbContext Data)
-            : base(Data) { }
+        public PieceRepository(TeistDbContext context) : base(context)
+        {
+
+        }
     }
 }

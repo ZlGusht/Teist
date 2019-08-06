@@ -1,10 +1,12 @@
-﻿namespace Teist.Data.Repositories
-{
-    using Teist.Data.Models;
+﻿using Teist.Data.Models;
 
-    public class ArtistRepository : BaseRepository<Artist>
+namespace Teist.Data.Repositories
+{
+    class ArtistRepository : EfDeletableEntityRepository<Artist>
     {
-        public ArtistRepository(TeistDbContext Data)
-            : base(Data) { }
+        public ArtistRepository(TeistDbContext context) : base(context)
+        {
+
+        }
     }
 }
