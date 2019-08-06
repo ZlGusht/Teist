@@ -1,0 +1,23 @@
+.header{
+    &--container{
+        display: flex;
+        height: 5rem;
+        background-color: var(--color-primary);
+        color: white;
+    }
+
+    &--logo{
+        letter-spacing: 1rem;
+        text-transform: uppercase;
+        margin: auto auto auto 2rem;
+    }
+
+    &--links{
+        margin: auto 2rem auto 0;
+    }
+
+    &--link{
+        text-transform: uppercase;
+    }
+
+}
