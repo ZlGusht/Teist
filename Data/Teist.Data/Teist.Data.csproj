@@ -38,8 +38,4 @@
     <ProjectReference Include="..\Teist.Data.Models\Teist.Data.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

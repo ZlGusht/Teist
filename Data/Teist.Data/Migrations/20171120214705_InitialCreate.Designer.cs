@@ -10,7 +10,7 @@ using System;
 
 namespace Teist.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(TeistDbContext))]
     [Migration("20171120214705_InitialCreate")]
     partial class InitialCreate
     {

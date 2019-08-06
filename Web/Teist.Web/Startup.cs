@@ -48,7 +48,7 @@
         {
             // Framework services
             // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<TeistDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["JwtTokenValidation:Secret"]));
@@ -87,7 +87,7 @@
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<TeistDbContext>()
                 .AddUserStore<ApplicationUserStore>()
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders();
@@ -117,14 +117,14 @@
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<TeistDbContext>();
 
                 if (env.IsDevelopment())
                 {
                     dbContext.Database.Migrate();
                 }
 
-                ApplicationDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
+                TeistDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
             }
 
             if (env.IsDevelopment())
