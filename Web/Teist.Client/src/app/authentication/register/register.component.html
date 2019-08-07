@@ -1,0 +1,15 @@
+<div class="login--container">
+    <form [formGroup]="inputs">
+      <h2>Register:</h2>
+      <label> Email: 
+          <input type="text" class="login--control" formControlName="email">
+      </label>
+      <label>Password: 
+          <input type="password" class="login--control" formControlName="password">
+      </label>
+      <label>Confirm Password: 
+          <input type="password" class="login--control" formControlName="confirmPassword">
+      </label>
+      <div class="button--primary" (click)="Register()">Register</div>
+    </form>
+  </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getConfig } from '../../config/app.config';
+import {Configuration } from '../../config/app.config';
 import { AuthenticationModel } from '../../models/contracts/authentication-model.interface';
 import * as jwt_decode from 'jwt-decode';
 
@@ -8,7 +8,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class TokenService {
 
-  private readonly config = getConfig();
+  private readonly config = Configuration;
 
   private authenticationModel?: AuthenticationModel;
 

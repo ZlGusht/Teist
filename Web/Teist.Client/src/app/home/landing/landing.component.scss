@@ -1,28 +1,135 @@
 .home{
     &--container{
+    }
+
+    &--poster{
         height: calc(100vh - 5rem);
         background: url("./../../../assets/img/audio-cassette-cassette-tape-1626481.jpg");
         background-position: center;
         background-size: cover;
         display: flex;
     }
-
-    &--poster{
+    
+    &--texts{
         margin: auto;
         background-color: rgba(0,0,0, 0.8);
         border-radius: 1rem;
         width: 40vw;
+        height: 60vh;
         color: white;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template: 50% 30% 20% / auto;
+        font-size: 2rem;
+        position: relative;
 
         *{
-            margin: 2rem auto;
+            width: 100%;
+            margin: auto;
+            text-align: center;
         }
 
         h1{
             text-transform: uppercase;
-            transform: scale(2);
+        }
+
+        p{
+            span{
+                text-transform: uppercase;
+                color: var(--color-primary);
+            }
+        }
+
+        a{
+            width: 30%;
+            color: black;
+            background-color: var(--color-accent);
+            border-radius: 1rem;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    &--intro{
+        height: 60vh;
+        background-color: white;
+        display: grid;
+        grid-template: auto / auto auto auto;
+
+        &--item{
+            margin: auto;
+            width: 40rem;
+            height: 40rem;
+            background-color: var(--color-primary);
+            transition: all 0.3s;
+            color: white;
+            display: grid;
+            grid-template: 70% 30% / auto;
+
+            *{
+                margin: auto;
+            }
+
+            i{
+                font-size: 15rem;
+            }
+
+            p{
+                margin: auto auto 5rem auto;
+                font-size: 3rem;
+            }
+
+            &:nth-child(2n){
+                background-color: var(--color-accent);
+                color: black;
+            }
+
+            &:hover{
+                border-radius: 20rem;
+            }
+        }
+    }
+
+    &--auth{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+
+        *{
+            margin: auto;
+        }
+
+        &--button{
+            height: 10rem;
+            border-radius: 1rem;
+            font-size: 3rem;
+            color: white;
+            background-color: var(--color-light-green);
+            padding: 3rem;
+            transition: all 0.3s;
+
+            &:hover{
+                transform: scale(1.4);
+                cursor: pointer;
+            }
+        }
+
+        &--login{
+            height: 10rem;
+            font-size: 2rem;
+            padding-top: 5rem;
+            
+            a{
+                text-decoration: none;
+                color: var(--color-light-green);
+                transition: all 0.3s;
+
+                &:hover{
+                    border-bottom: 1px solid var(--color-banana);
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
