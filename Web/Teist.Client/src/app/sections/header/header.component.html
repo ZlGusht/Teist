@@ -1,9 +1,9 @@
 <div class="header--container">
-  <div class="header--logo">Teist</div>
+  <a class="header--logo" [routerLink]="landing">Teist</a>
   <div class="header--links">
-    <a class="header--link">Artists</a>
-    <a class="header--link">Reviews</a>
-    <a class="header--link">Charts</a>
+    <a class="header--link" [routerLink]="browse/piece" *ngIf="isLoggedIn()">Browse</a>
+    <a class="header--link" [routerLink]="login" *ngIf="!isLoggedIn()">Log In</a>
+    <a class="header--link" [routerLink]="account" *ngIf="isLoggedIn()">Account</a>
     <a class="header--link header--account"></a>
   </div>
 </div>

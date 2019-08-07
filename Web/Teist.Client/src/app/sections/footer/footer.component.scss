@@ -1,7 +1,12 @@
 .footer{
     &--container{
         height: 3rem;
-        background-color: rgba(yellow, 1);
+        background-color: rgba(yellow, 0.9);
         font-weight: bold;
+        display: flex;
+    }
+
+    &--text{
+        margin: auto 3rem auto auto;
     }
 }

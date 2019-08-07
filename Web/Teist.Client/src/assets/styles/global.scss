@@ -17,15 +17,22 @@ body{
     font-family: 'Exo', sans-serif;
     font-weight: 400;
     line-height: 1.6;
-    background-image: linear-gradient(to left top, #dddbcb, #bccbb2, #92bca5, #60aca3, #1b9aaa);
+    background-image: linear-gradient(to top, #dc1619, #ef5a00, #fb8b00, #ffb800, #ffe502);
     background-size: cover;
     background-repeat: no-repeat;
 }
 /* Variables */
 :root{
---color-primary: #006BB3;
---color-secondary: #0F9638;
---color-light-blue: #00FFC5;
---color-blue-green: #1B9AAA;
---color-bone: #DDDBCB;
+--color-primary: #dc1619;
+--color-accent: #ffe502;
+--color-light-green: #a9e5bb;
+--color-light-blue: #d3fad6;
+--color-banana: #f1e8b8;
 }
+
+$color-primary: #dc1619;
+$color-accent: #ffe502;
+$color-light-green: #a9e5bb;
+$color-light-blue: #d3fad6;
+$color-banana: #f1e8b8;
+
