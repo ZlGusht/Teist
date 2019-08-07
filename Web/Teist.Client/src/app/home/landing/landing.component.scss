@@ -1,0 +1,28 @@
+.home{
+    &--container{
+        height: calc(100vh - 5rem);
+        background: url("./../../../assets/img/audio-cassette-cassette-tape-1626481.jpg");
+        background-position: center;
+        background-size: cover;
+        display: flex;
+    }
+
+    &--poster{
+        margin: auto;
+        background-color: rgba(0,0,0, 0.8);
+        border-radius: 1rem;
+        width: 40vw;
+        color: white;
+        display: flex;
+        flex-direction: column;
+
+        *{
+            margin: 2rem auto;
+        }
+
+        h1{
+            text-transform: uppercase;
+            transform: scale(2);
+        }
+    }
+}
