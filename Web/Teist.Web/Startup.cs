@@ -18,7 +18,6 @@
     using Teist.Data.Seeding;
     using Teist.Services.Messaging;
     using Teist.Web.Infrastructure.Middlewares.Auth;
-    using Teist.Web.ViewModels.TodoItems;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics;
@@ -49,7 +48,7 @@
         {
             // Framework services
             // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<TeistDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["JwtTokenValidation:Secret"]));
@@ -88,7 +87,7 @@
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<TeistDbContext>()
                 .AddUserStore<ApplicationUserStore>()
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders();
@@ -113,19 +112,19 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            AutoMapperConfig.RegisterMappings(typeof(TodoItemViewModel).GetTypeInfo().Assembly);
+            //AutoMapperConfig.RegisterMappings(typeof(TodoItemViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<TeistDbContext>();
 
                 if (env.IsDevelopment())
                 {
                     dbContext.Database.Migrate();
                 }
 
-                ApplicationDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
+                TeistDbContextSeeder.Seed(dbContext, serviceScope.ServiceProvider);
             }
 
             if (env.IsDevelopment())

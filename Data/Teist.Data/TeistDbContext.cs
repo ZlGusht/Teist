@@ -6,25 +6,33 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Teist.Data.Common.Models;
-    using Teist.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    using Teist.Data.Common.Models;
+    using Teist.Data.Models;
+
+    public class TeistDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
-            typeof(ApplicationDbContext).GetMethod(
+            typeof(TeistDbContext).GetMethod(
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public TeistDbContext(DbContextOptions<TeistDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Artist> Artists { get; set; }
+
+        public DbSet<Album> Albums { get; set; }
+
+        public DbSet<Chart> Charts { get; set; }
+
+        public DbSet<Piece> Pieces { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -51,6 +59,7 @@
             base.OnModelCreating(builder);
 
             ConfigureUserIdentityRelations(builder);
+            ConfigureRelations(builder);
 
             EntityIndexesConfiguration.Configure(builder);
 
@@ -96,6 +105,40 @@
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+        }
+
+        private static void ConfigureRelations(ModelBuilder builder)
+        {
+            builder.Entity<Album>(album => {
+                album.HasOne(a => a.Performer).WithMany(p => p.Albums);
+                album.HasMany(a => a.Collaborators);
+                album.HasMany(a => a.Pieces).WithOne(p => p.Album);
+                album.HasMany(a => a.Reviews).WithOne(r => r.Album);
+                album.HasMany(a => a.Charts);
+            });
+            builder.Entity<Artist>(artist =>
+            {
+                artist.HasMany(a => a.Albums).WithOne(a => a.Performer);
+                artist.HasMany(a => a.Pieces).WithOne(a => a.Performer);
+            });
+            builder.Entity<Chart>(chart =>
+            {
+                chart.HasMany(a => a.Pieces);
+            });
+            builder.Entity<Piece>(piece =>
+            {
+                piece.HasOne(p => p.Performer).WithMany(p => p.Pieces);
+                piece.HasOne(p => p.Album).WithMany(a => a.Pieces);
+                piece.HasMany(p => p.Reviews).WithOne(r => r.Piece);
+                piece.HasOne(p => p.Chart);
+            });
+            builder.Entity<Review>(review =>
+            {
+                review.HasOne(r => r.Piece).WithMany(p => p.Reviews);
+                review.HasOne(r => r.Album).WithMany(a => a.Reviews);
+                review.HasOne(r => r.Reviewer).WithMany(u => u.Reviews);
+            });
+
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

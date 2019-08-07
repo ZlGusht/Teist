@@ -9,9 +9,9 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
 
-    public static class ApplicationDbContextSeeder
+    public static class TeistDbContextSeeder
     {
-        public static void Seed(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        public static void Seed(TeistDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
             {
@@ -27,7 +27,7 @@
             Seed(dbContext, roleManager);
         }
 
-        public static void Seed(ApplicationDbContext dbContext, RoleManager<ApplicationRole> roleManager)
+        public static void Seed(TeistDbContext dbContext, RoleManager<ApplicationRole> roleManager)
         {
             if (dbContext == null)
             {

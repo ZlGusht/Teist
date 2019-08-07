@@ -14,10 +14,28 @@
     public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(UserManager<ApplicationUser> userManager,
+                                 SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
+            this.signInManager = signInManager;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody]UserLoginBindingModel model)
+        {
+            var user = await userManager.FindByEmailAsync(model.Email);
+            var result = signInManager.PasswordSignInAsync(user, model.Password, true, false).Result;
+
+            if (result.Succeeded)
+            {
+                return this.Ok();
+            }
+
+            return this.BadRequest(result.IsNotAllowed);
+
         }
 
         [HttpPost]
