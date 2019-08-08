@@ -1,3 +1,9 @@
-<p>
-  chart works!
-</p>
+<div class="chart--container" >
+    <form class="chart--card" [formGroup]="chartForm">
+      <input type="text" placeholder="Name" formControlName="name">
+      <input type="text" placeholder="Type" formControlName="">
+      <input type="text" placeholder="Genre" formControlName="">
+      <textarea  placeholder="Description" formControlName=""></textarea>
+      <div class="button--primary" (click)="Create()"><p>Create</p></div>
+    </form>
+  </div>

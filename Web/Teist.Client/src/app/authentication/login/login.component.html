@@ -1,11 +1,27 @@
 <div class="login--container">
   <form [formGroup]="login">
     <h2>Login:</h2>
-    <label> Email: 
-        <input type="text" class="login--control" formControlName="email">
+    <label> Email:
+      <input type="text" class="login--control" formControlName="email">
+      <div *ngIf="login.controls.email.invalid && (login.controls.email.dirty || login.controls.email.touched)" class="alert">
+        <div *ngIf="login.controls.email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="login.controls.email.errors.email">
+            Email must be in an email format.
+          </div>
+      </div>
     </label>
-    <label>Password: 
-        <input type="password" class="login--control" formControlName="password">
+    <label>Password:
+      <input type="password" class="login--control" formControlName="password">
+      <div *ngIf="login.controls.password.invalid && (login.controls.password.dirty || login.controls.password.touched)" class="alert">
+          <div *ngIf="login.controls.password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="login.controls.password.errors.minlength">
+              Password must be at least 5 characters.
+            </div>
+        </div>
     </label>
     <div class="button--primary" (click)="LogIn()">Log In</div>
   </form>

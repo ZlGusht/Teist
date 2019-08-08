@@ -1,15 +1,45 @@
 <div class="login--container">
     <form [formGroup]="inputs">
-      <h2>Register:</h2>
-      <label> Email: 
-          <input type="text" class="login--control" formControlName="email">
-      </label>
-      <label>Password: 
-          <input type="password" class="login--control" formControlName="password">
-      </label>
-      <label>Confirm Password: 
-          <input type="password" class="login--control" formControlName="confirmPassword">
-      </label>
-      <div class="button--primary" (click)="Register()">Register</div>
+        <h2>Register:</h2>
+        <label> Email:
+            <input type="text" class="login--control" formControlName="email">
+
+            <div *ngIf="inputs.controls.email.invalid && (inputs.controls.email.dirty || inputs.controls.email.touched)"
+                class="alert alert-danger">
+                <div *ngIf="inputs.controls.email.errors.required">
+                    Email is required.
+                </div>
+                <div *ngIf="inputs.controls.email.errors.email">
+                    Email must be an email format.
+                </div>
+            </div>
+        </label>
+        <label>Password:
+            <input type="password" class="login--control" formControlName="password">
+
+            <div *ngIf="inputs.controls.password.invalid && (inputs.controls.password.dirty || inputs.controls.password.touched)"
+                class="alert alert-danger">
+                <div *ngIf="inputs.controls.password.errors.required">
+                    Password is required.
+                </div>
+                <div *ngIf="inputs.controls.password.errors.minlength">
+                    Password must be at least 5 characters.
+                </div>
+            </div>
+        </label>
+        <label>Confirm Password:
+            <input type="password" class="login--control" formControlName="confirmPassword">
+
+            <div *ngIf="inputs.controls.confirmPassword.invalid && (inputs.controls.confirmPassword.dirty || inputs.controls.confirmPassword.touched)"
+                class="alert alert-danger">
+                <div *ngIf="inputs.controls.confirmPassword.errors.required">
+                    Confirm Password is required.
+                </div>
+                <div *ngIf="inputs.controls.confirmPassword.errors.minlength">
+                    Confirm Password must be at least 5 characters.
+                </div>
+            </div>
+        </label>
+        <div class="button--primary" (click)="Register()">Register</div>
     </form>
-  </div>
+</div>
