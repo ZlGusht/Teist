@@ -1,5 +1,40 @@
 <div class="album--container">
-    <a class="album--card">
-      
-    </a>
+    <form class="album--card" [formGroup]="albumForm">
+      <input type="text" placeholder="Name" formControlName="name">
+      <input type="text" placeholder="Genre" formControlName="genre">
+  
+      <mat-form-field>
+        <input type="text" placeholder="Artist" aria-label="Number" matInput fromControlName="performer"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of artists | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input type="text" placeholder="Collaborators" aria-label="Number" matInput fromControlName="collaborators"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of artists | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <mat-form-field>
+          <input type="text" placeholder="Pieces" aria-label="Number" matInput fromControlName="pieces"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of artists | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      <div class="button--primary" (click)="Create()">
+        <p>Create</p>
+      </div>
+    </form>
   </div>

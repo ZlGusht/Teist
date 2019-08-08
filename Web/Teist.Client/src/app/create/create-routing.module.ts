@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChartComponent } from './chart/chart.component';
-import { ReviewComponent } from '../browse/review/review.component';
-import { PieceComponent } from '../browse/piece/piece.component';
+import { ReviewComponent } from './review/review.component';
+import { PieceComponent } from './piece/piece.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
 

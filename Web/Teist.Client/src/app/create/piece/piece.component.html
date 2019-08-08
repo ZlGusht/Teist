@@ -1,5 +1,31 @@
 <div class="piece--container">
-    <a class="piece--card">
-      
-    </a>
-  </div>
+  <form class="piece--card" [formGroup]="pieceForm">
+    <input type="text" placeholder="Name" formControlName="name">
+    <input type="text" placeholder="Genre" formControlName="genre">
+    <input type="text" placeholder="Album" formControlName="album">
+
+    <mat-form-field>
+      <input type="text" placeholder="Artist" aria-label="Number" matInput fromControlName="performer"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of artists | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="text" placeholder="Collaborators" aria-label="Number" matInput fromControlName="collaborators"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of artists | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="button--primary" (click)="Create()">
+      <p>Create</p>
+    </div>
+  </form>
+</div>

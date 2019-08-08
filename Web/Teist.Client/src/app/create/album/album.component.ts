@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
   styleUrls: ['./album.component.scss']
 })
-export class AlbumComponent implements OnInit {
+export class AlbumComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  public pieceForm = new FormGroup({
+    name: new FormControl(''),
+    genre: new FormControl(''),
+    pieces: new FormControl(''),
+    performer: new FormControl(''),
+    collaborators: new FormControl(''),
+  });
 
 }

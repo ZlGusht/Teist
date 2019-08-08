@@ -1,5 +1,20 @@
 <div class="review--container">
-    <a class="review--card">
-      
-    </a>
+    <form class="review--card" [formGroup]="reviewForm">
+      <input type="text" placeholder="Name" formControlName="name">
+  
+      <mat-form-field>
+        <input type="text" placeholder="Target" aria-label="Number" matInput fromControlName="target"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of targets | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <textarea  placeholder="Description" formControlName="desription"></textarea>
+  
+      <div class="button--primary" (click)="Create()">
+        <p>Create</p>
+      </div>
+    </form>
   </div>

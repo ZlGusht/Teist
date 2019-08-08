@@ -11,6 +11,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { BrowseModule } from './browse/browse.module';
 import { CreateModule } from './create/create.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     AuthenticationModule,
     BrowseModule,
     CreateModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

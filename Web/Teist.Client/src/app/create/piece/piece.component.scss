@@ -1,0 +1,47 @@
+.piece{
+    &--container{
+        display: flex;
+    }
+
+    &--card{
+        margin: 10rem auto;
+        width: 70vw;
+        min-height: 80vh;
+        display: grid;
+        background-color: white;
+        grid-template: auto auto auto auto auto 10%/ auto;
+
+        border-radius: 1rem;
+        
+        input, textarea{
+            margin: 4rem;
+            border:none;
+            border-bottom: 1px solid var(--color-banana);
+
+            &:focus{
+                outline: none;
+                border-bottom: 2px solid var(--color-accent);
+            }
+        }
+
+        mat-radio-group, mat-form-field{
+            margin: 4rem;
+
+            input[type="text"]{
+                width: 30%;
+            }
+        }
+
+        div{
+            width: 30%;
+            height: 80%;
+            margin: auto;
+            font-size: 2rem;
+            display: flex;
+
+            p{
+                margin:auto;
+            }
+        }
+    }
+}

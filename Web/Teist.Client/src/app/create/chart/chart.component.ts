@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent {
+  public chartForm = new FormGroup({
+    name: new FormControl(''),
+    type: new FormControl('Song'),
+    description: new FormControl(''),
+    contents: new FormControl(''),
+  });
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public contents: string[] = null;
 }

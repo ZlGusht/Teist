@@ -1,9 +1,23 @@
-<div class="chart--container" >
-    <form class="chart--card" [formGroup]="chartForm">
-      <input type="text" placeholder="Name" formControlName="name">
-      <input type="text" placeholder="Type" formControlName="">
-      <input type="text" placeholder="Genre" formControlName="">
-      <textarea  placeholder="Description" formControlName=""></textarea>
-      <div class="button--primary" (click)="Create()"><p>Create</p></div>
-    </form>
-  </div>
+<div class="chart--container">
+  <form class="chart--card" [formGroup]="chartForm">
+    <input type="text" placeholder="Name" formControlName="name">
+    <mat-radio-group formControlName="type">
+      <mat-radio-button value="Song">Songs</mat-radio-button>
+      <mat-radio-button value="Album">Album</mat-radio-button>
+    </mat-radio-group>
+    <textarea placeholder="Description" formControlName="description"></textarea>
+
+    <mat-form-field>
+      <input type="text" placeholder="{{chartForm.value.type}}" aria-label="Number" matInput fromControlName="contents" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of contents | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="button--primary" (click)="Create()">
+      <p>Create</p>
+    </div>
+  </form>
+</div>
