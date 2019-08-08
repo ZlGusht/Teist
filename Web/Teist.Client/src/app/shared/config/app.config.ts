@@ -1,10 +1,10 @@
 export const Configuration = {
 
     restApi: {
-        prefix: `localhost:50576/api`,
+        prefix: `http://localhost:50576/api`,
         authentication: {
-            login: '/login',
-            register: '/register'
+            login: '/Account/Login',
+            register: '/Account/Register'
         }
     },
     

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
+  /**
+   *
+   */
+  constructor(private authService: AuthenticationService) {
+  }
 
 public login = new FormGroup({
   email: new FormControl('', [
@@ -18,7 +25,7 @@ public login = new FormGroup({
 });
 
 public LogIn() {
-
+  this.authService.LogIn(this.login.value);
 }
 
 }

@@ -1,29 +1,41 @@
 import { Injectable } from '@angular/core';
-import { BaseHttpCrudService } from '../http/base-http-crud.service';
-import { User } from '../../models/user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TokenService } from '../token/token.service';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Configuration } from '../../config/app.config';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService{
+export class AuthenticationService {
 
   private config = Configuration;
 
-  private headers = new HttpHeaders();
+  private headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  private httpRequest: HttpRequest<any>;
 
   constructor(private http: HttpClient) {
-    this.headers.set('Content-Type', 'application/json');
+    console.log(this.headers.get('Content-Type'), 'maika ti');
   }
 
-  public LogIn(form: any){
-  this.http.post(this.config.restApi.prefix + this.config.restApi.authentication.login, form, );
+  public LogIn(form: any) {
+    let request = this.makeRequestOptions('POST', this.config.restApi.prefix +
+    this.config.restApi.authentication.login, form);
+
+    request = request.clone({headers: this.headers})
+
+    this.http.request(request).subscribe(value => {console.log(value)});
   }
 
-  public Register(form: any){
-    this.http.post(this.config.restApi.prefix + this.config.restApi.authentication.register,
-      form, {headers: this.headers});
-    }
+  public Register(form: any) {
+    let request = this.makeRequestOptions('POST', this.config.restApi.prefix +
+    this.config.restApi.authentication.register, form);
+
+    request = request.clone({headers: this.headers})
+
+    this.http.request(request).subscribe(value => {console.log(value)});
+  }
+
+  protected makeRequestOptions(method, url, optional?): HttpRequest<any> {
+    return new HttpRequest(method, url, optional);
+  }
 }

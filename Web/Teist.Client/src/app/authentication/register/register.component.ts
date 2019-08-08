@@ -19,7 +19,7 @@ export class RegisterComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(5)]),
-    confirmPassword: new FormControl('', [
+    passwordConfirmation: new FormControl('', [
       Validators.required,
       Validators.minLength(5)]),
   });

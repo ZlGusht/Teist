@@ -28,14 +28,14 @@
             </div>
         </label>
         <label>Confirm Password:
-            <input type="password" class="login--control" formControlName="confirmPassword">
+            <input type="password" class="login--control" formControlName="passwordConfirmation">
 
-            <div *ngIf="inputs.controls.confirmPassword.invalid && (inputs.controls.confirmPassword.dirty || inputs.controls.confirmPassword.touched)"
+            <div *ngIf="inputs.controls.passwordConfirmation.invalid && (inputs.controls.passwordConfirmation.dirty || inputs.controls.passwordConfirmation.touched)"
                 class="alert alert-danger">
-                <div *ngIf="inputs.controls.confirmPassword.errors.required">
+                <div *ngIf="inputs.controls.passwordConfirmation.errors.required">
                     Confirm Password is required.
                 </div>
-                <div *ngIf="inputs.controls.confirmPassword.errors.minlength">
+                <div *ngIf="inputs.controls.passwordConfirmation.errors.minlength">
                     Confirm Password must be at least 5 characters.
                 </div>
             </div>
