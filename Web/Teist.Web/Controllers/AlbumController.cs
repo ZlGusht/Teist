@@ -1,42 +1,62 @@
 ﻿namespace Teist.Web.Controllers
 {
-    using System.Collections.Generic;
 
     using Microsoft.AspNetCore.Mvc;
+    using Teist.Common.ViewModels;
+    using Teist.Data.Managers;
 
-    
     public class AlbumController : BaseController
     {
-        // GET: api/Album
+        private readonly AlbumManager manager;
+
+        public AlbumController(AlbumManager manager)
+        {
+            this.manager = manager;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.Ok(this.manager.GetAll());
         }
 
-        // GET: api/Album/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet]
+        public IActionResult Get(string name)
         {
-            return "value";
+            return this.Ok(this.manager.Get(name));
         }
 
-        // POST: api/Album
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] AlbumViewModel album)
         {
+            if (album == null)
+            {
+                return this.BadRequest();
+            }
+            this.manager.CreateAlbum(album);
+            return this.Ok();
         }
 
-        // PUT: api/Album/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public IActionResult Put(string name, [FromBody] AlbumViewModel album)
         {
+            if (name == null || album == null || !this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var old = this.manager.Get(name);
+
+            this.manager.Update(old, album);
+
+            return this.Ok();
+
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public void Delete(string name)
         {
+            this.manager.Delete(name);
         }
     }
 }

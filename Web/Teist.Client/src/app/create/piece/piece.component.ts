@@ -11,7 +11,7 @@ export class PieceComponent {
   public pieceForm = new FormGroup({
     name: new FormControl(''),
     genre: new FormControl(''),
-    album: new FormControl(''),
+    pieceType: new FormControl(''),
     performer: new FormControl(''),
     collaborators: new FormControl(''),
   });

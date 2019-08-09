@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Teist.Web.ViewModels
+﻿namespace Teist.Common.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Teist.Common.Enums;
+
     public class ArtistViewModel
     {
         [Required]
@@ -12,5 +14,7 @@ namespace Teist.Web.ViewModels
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public Genre Genre { get; set; }
     }
 }

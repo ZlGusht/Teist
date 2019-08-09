@@ -1,4 +1,4 @@
-﻿namespace Teist.Web.ViewModels.Account
+﻿namespace Teist.Common.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Configuration } from '../../config/app.config';
-import { AuthenticationModel } from '../../models/contracts/authentication-model.interface';
+import { AuthenticationModel } from '../../models/contracts/authentication-model';
 import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -16,50 +16,41 @@ export class TokenService {
 
   get token(): string | void {
     if (!this.authenticationModel) {
-      const tokenFromSessionStorage = sessionStorage.getItem(
-        this.config.tokenName
-      );
+      const token = localStorage.getItem('IDENTITY_TOKEN');
 
-      if (!tokenFromSessionStorage) {
+      if (!token) {
         return;
       }
 
-      this.setToken(tokenFromSessionStorage, false);
-    }
-
-    if (Date.now() > this.authenticationModel.expirationTime) {
-
-      this.removeToken();
-      return;
+      this.fillToken(token);
     }
 
     return this.authenticationModel.token;
   }
 
-  public setToken(token: string, setStorage: boolean): void {
-    const decodedToken = jwt_decode(token);
-    this.authenticationModel = {
-      token,
-      uniqueName: decodedToken.uniqueName,
-      roles: decodedToken.role,
-      expirationTime: decodedToken.exp
-    };
-
-    if (setStorage) {
-      sessionStorage.setItem(
-        this.config.tokenName,
-        token
-      );
-    }
+  public setToken(data: any): void {
+    const decodedToken = jwt_decode(data.access_token);
+    localStorage.setItem('IDENTITY_TOKEN', data.access_token);
+    localStorage.setItem('IDENTITY_TOKEN_EXPIRY', decodedToken.exp);
+    localStorage.setItem('IDENTITY_ROLE', decodedToken.Roles);
+    this.fillToken(data.access_token);
   }
 
   public removeToken(): void {
     this.authenticationModel = undefined;
-    sessionStorage.removeItem(this.config.tokenName);
+    localStorage.removeItem('IDENTITY_TOKEN');
   }
 
   get isLoggedIn(): boolean {
     return !!this.token;
+  }
+
+  private fillToken(token: string) {
+    const decodedToken = jwt_decode(token);
+    this.authenticationModel = new AuthenticationModel();
+    this.authenticationModel.expirationTime = decodedToken.exp;
+    this.authenticationModel.uniqueName = decodedToken.sub;
+    this.authenticationModel.token = token;
   }
 }
 

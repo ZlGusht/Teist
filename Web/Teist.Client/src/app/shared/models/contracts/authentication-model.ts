@@ -1,6 +1,6 @@
 import { Role } from '../../enums/role';
 
-export interface AuthenticationModel {
+export class AuthenticationModel {
     token: string;
     uniqueName: string;
     roles: Role[];

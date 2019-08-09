@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Teist.Data.Managers
 {
-    class PieceManager
+    public class PieceManager
     {
     }
 }

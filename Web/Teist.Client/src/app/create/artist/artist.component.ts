@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,9 @@ export class ArtistComponent {
 
   public artistForm = new FormGroup({
     name: new FormControl(''),
-    genre: new FormControl('')
+    genre: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl('')
   });
 
 }

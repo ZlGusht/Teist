@@ -4,7 +4,7 @@
 
     using Teist.Data.Models;
     using Teist.Web.Infrastructure.Extensions;
-    using Teist.Web.ViewModels.Account;
+    using Teist.Common.ViewModels.Account;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;

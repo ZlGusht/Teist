@@ -1,14 +1,15 @@
 export const Configuration = {
 
     restApi: {
-        prefix: `http://localhost:50576/api`,
+        prefix: `http://localhost:56865/api`,
         authentication: {
             login: '/Account/Login',
             register: '/Account/Register'
-        }
+        },
+        album: '/Album/Post'
     },
-    
-    tokenName: 'auth_token'
+
+    tokenName: 'IDENTITY_TOKEN'
 };
 
 

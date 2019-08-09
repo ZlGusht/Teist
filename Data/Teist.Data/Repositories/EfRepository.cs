@@ -30,6 +30,7 @@
         public virtual void Add(TEntity entity)
         {
             this.DbSet.Add(entity);
+            this.Context.SaveChanges();
         }
 
         public virtual void Update(TEntity entity)
@@ -46,6 +47,7 @@
         public virtual void Delete(TEntity entity)
         {
             this.DbSet.Remove(entity);
+            this.Context.SaveChanges();
         }
 
         public Task<int> SaveChangesAsync() => this.Context.SaveChangesAsync();

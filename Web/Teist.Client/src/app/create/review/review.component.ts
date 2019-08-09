@@ -10,7 +10,7 @@ export class ReviewComponent {
 
   public reviewForm = new FormGroup({
     name: new FormControl(''),
-    targe: new FormControl(''),
+    target: new FormControl(''),
     desription: new FormControl('')
   });
 

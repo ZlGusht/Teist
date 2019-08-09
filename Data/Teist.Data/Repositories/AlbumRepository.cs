@@ -1,4 +1,5 @@
-﻿using Teist.Data.Models;
+﻿using System.Linq;
+using Teist.Data.Models;
 
 namespace Teist.Data.Repositories
 {
@@ -7,6 +8,12 @@ namespace Teist.Data.Repositories
         public AlbumRepository(TeistDbContext context) : base(context)
         {
 
+        }
+
+        public Album GetByName(string name)
+        {
+            var all = this.All();
+            return all.Where(e => e.Name == name).FirstOrDefault();
         }
     }
 }

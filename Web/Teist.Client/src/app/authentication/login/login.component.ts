@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
+import { TokenService } from 'src/app/shared/services/token/token.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent {
   /**
    *
    */
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService, private tokenService: TokenService) {
   }
 
 public login = new FormGroup({
@@ -25,7 +27,10 @@ public login = new FormGroup({
 });
 
 public LogIn() {
-  this.authService.LogIn(this.login.value);
+  this.authService.LogIn(this.login.value).subscribe(
+    () => { },
+    (error: HttpErrorResponse) => {});
+  return this.tokenService.isLoggedIn;
 }
 
 }

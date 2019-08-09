@@ -11,7 +11,7 @@ export class HeaderComponent {
   constructor(private readonly tokenService: TokenService) {
   }
 
-  public isLoggedIn(): boolean{
+  public isLoggedIn(): boolean {
     return this.tokenService.isLoggedIn;
   }
 
