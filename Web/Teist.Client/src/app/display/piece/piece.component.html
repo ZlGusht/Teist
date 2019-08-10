@@ -1,0 +1,12 @@
+<div class="piece--container">
+  <h1>
+    {{this.piece.name}}
+  </h1>
+  <div class="piece--card">
+    <p>By {{this.piece.artist.nickname}}</p>
+    <p *ngIf="this.piece.album">From {{this.piece.album.name}}</p>
+    <p>{{this.piece.genre}}</p>
+    <p>{{this.piece.pieceType}}</p>
+  </div>
+  <div class="button--primary piece--button" (click)="goBack()">Back</div>
+</div>

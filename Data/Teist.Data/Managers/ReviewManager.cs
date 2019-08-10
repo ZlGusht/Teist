@@ -26,11 +26,17 @@ namespace Teist.Data.Managers
             this.userRepository = userRepository;
         }
 
+        public IEnumerable<Review> All()
+        {
+            return this.reviewRepository.All();
+        }
+
         public void Create(ReviewViewModel model, ClaimsPrincipal principal)
         {
             var user = this.userRepository.All().Where(u => u.Email == principal.Identity.Name).FirstOrDefault();
             var review = new Review()
             {
+                Name = model.Name,
                 Reviewer = user,
                 Description = model.Description,
             };

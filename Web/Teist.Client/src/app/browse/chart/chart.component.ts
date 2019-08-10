@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartDataService } from 'src/app/shared/services/data/chart-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chart',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+  private charts;
+  constructor(private chartService: ChartDataService, private router: Router) { }
 
   ngOnInit() {
+    this.chartService.getAll().then(charts => {
+      this.charts = charts;
+    })
+  }
+
+  public displayChart(chart){
+    this.router.navigateByUrl('/display/chart', {state: {data: {chart: chart}}});
   }
 
 }

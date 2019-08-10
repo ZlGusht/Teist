@@ -366,6 +366,8 @@ namespace Teist.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
+                    b.Property<string>("Name");
+
                     b.Property<int?>("PieceId");
 
                     b.Property<int>("Rating");

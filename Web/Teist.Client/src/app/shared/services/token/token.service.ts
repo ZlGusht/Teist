@@ -25,6 +25,11 @@ export class TokenService {
       this.fillToken(token);
     }
 
+    const date = Date.now();
+    if(this.authenticationModel.expirationTime > date){
+      this.removeToken;
+    }
+
     return this.authenticationModel.token;
   }
 

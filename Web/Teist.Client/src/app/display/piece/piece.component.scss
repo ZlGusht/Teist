@@ -1,0 +1,43 @@
+.piece{
+    &--container{
+        min-height: calc(100vh - 11rem);
+        display: flex;
+        flex-direction: column;
+
+        h1{
+            margin: auto auto 0 auto;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 5rem;
+            width: 70vw;
+            text-align: center; 
+        }
+    }
+
+    &--card{
+        margin: 0 auto;
+        width: 70vw;
+        height: 60vh;
+        background-color: white;
+        display: grid;
+        grid-template: auto auto / auto auto;
+        
+        p{
+            margin: auto;
+            font-size: 3rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            &:nth-child(2n){
+                color: var(--color-accent)
+            }
+        }
+    }
+
+    &--button{
+        margin: 2rem auto auto auto;
+        width: 10vw;
+        font-size: 2rem;
+        text-align: center;;
+    }
+
+}

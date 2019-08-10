@@ -1,0 +1,51 @@
+.home{
+    &--container{
+        height: calc(100vh - 11rem);
+        display: flex;
+    }
+
+    &--items{
+        margin: auto;
+        display: grid;
+        grid-template: auto / auto auto auto;
+        height: 70vh;
+        width: 80vw;
+    }
+
+    &--item{
+        margin: auto;
+        width: 20vw;
+        height: 20vw;
+        display: flex;
+        border-radius: 50%;
+        transition: all 0.3s;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        p{
+            margin: auto;
+            font-size: 6rem;
+            color: var(--color-primary);
+        }
+    }
+
+    &--piece{
+        background: url("./../../../assets/img/_absolutely_free_photos_original_photos_singer-performing-on-stage-4398x2831_30102.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    &--chart{
+        background: url("./../../../assets/img/index.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    &--review{
+        background: url("./../../../assets/img/_absolutely_free_photos_original_photos_planning-5472x3648_24493.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+}

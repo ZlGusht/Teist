@@ -1,0 +1,13 @@
+<div class="review--container">
+  <h1>
+    {{this.review.name}}
+  </h1>
+  <div class="review--card">
+    <div class="review--item">
+      <h2>{{target.name}}</h2>
+      <p>{{this.review.description}}</p>
+    </div>
+    <p>By {{this.review.reviewer.email}}</p>
+  </div>
+  <div class="button--primary review--button" (click)="goBack()">Back</div>
+</div>

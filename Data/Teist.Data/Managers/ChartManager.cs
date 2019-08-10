@@ -22,6 +22,11 @@ namespace Teist.Data.Managers
             this.artistRepository = artistRepository;
         }
 
+        public IEnumerable<Chart> All()
+        {
+            return this.chartRepository.All();
+        }
+
         public void Create(ChartViewModel model)
         {
             var chart = new Chart()

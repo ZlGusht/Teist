@@ -14,12 +14,16 @@ import { Review } from 'src/app/shared/models/review';
 })
 export class ReviewComponent {
 
+  private piece = history.state.data;
+
   public reviewForm = new FormGroup({
     name: new FormControl(''),
     target: new FormControl(''),
     type: new FormControl(''),
     description: new FormControl('')
   });
+
+
 
   public types = Object.keys(Type).splice(3);
 
@@ -74,6 +78,11 @@ export class ReviewComponent {
     this.artistService.getAll().then(artists => {
       this.artists = artists;
     });
+    
+    if (history.state.data) {
+      this.reviewForm.controls.type.setValue('Piece');
+      this.reviewForm.controls.target.setValue([{id: history.state.data.piece.id, name: history.state.data.piece.name}]);
+    }
   }
 
   public Create() {
@@ -92,6 +101,7 @@ export class ReviewComponent {
 
     var data = new Review(review);
     this.reviewService.create(data);
+    history.state.data = undefined;
   }
 
   public OnSelect(event: any) {

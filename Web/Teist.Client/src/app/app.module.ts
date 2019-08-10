@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
+import { DisplayModule } from './display/display.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatRadioModule } from '@angular/material/radio';
     HttpClientModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    DisplayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

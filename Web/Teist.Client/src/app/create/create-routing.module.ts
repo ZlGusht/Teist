@@ -5,6 +5,7 @@ import { ReviewComponent } from './review/review.component';
 import { PieceComponent } from './piece/piece.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [{
   path: 'create',
@@ -28,6 +29,10 @@ const routes: Routes = [{
     path: 'artist',
     pathMatch: 'full',
     component: ArtistComponent
+},{
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent
 }
   ]
 }

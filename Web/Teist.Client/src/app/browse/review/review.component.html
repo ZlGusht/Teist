@@ -1,3 +1,10 @@
-<p>
-  review works!
-</p>
+<div class="review--container">
+    <div class="review--items">
+      <div class="review--item" *ngFor="let review of reviews" (click)="displayReview(review)">
+        <p>{{review.name}}</p>
+        <div class="review--buttons">
+        </div>
+      </div>
+    </div>
+  </div>
+  

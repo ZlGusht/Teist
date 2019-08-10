@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select'; 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatSelectModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  declarations: [ChartComponent, PieceComponent, ReviewComponent, AlbumComponent, ArtistComponent]
+  declarations: [ChartComponent, PieceComponent, ReviewComponent, AlbumComponent, ArtistComponent, HomeComponent]
 })
 export class CreateModule { }

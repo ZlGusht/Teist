@@ -6,9 +6,10 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, AccountComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

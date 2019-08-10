@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Teist.Common.ViewModels;
     using Teist.Data.Managers;
+    using Teist.Data.Models;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -18,9 +19,9 @@
 
         // GET: api/Review
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Review> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this.manager.All();
         }
 
         // GET: api/Review/5

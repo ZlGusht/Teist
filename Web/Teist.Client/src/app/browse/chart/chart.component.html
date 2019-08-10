@@ -1,3 +1,10 @@
-<p>
-  chart works!
-</p>
+<div class="chart--container">
+    <div class="chart--items">
+      <div class="chart--item" *ngFor="let chart of charts" (click)="displayChart(chart)">
+        <p>{{chart.name}}</p>
+        <div class="chart--buttons">
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -48,7 +48,7 @@
             // Framework services
             // TODO: Add pooling when this bug is fixed: https://github.com/aspnet/EntityFrameworkCore/issues/9741
             services.AddDbContext<TeistDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["JwtTokenValidation:Secret"]));
 
@@ -98,7 +98,12 @@
 
             services.AddCors();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(x =>
+                {
+                    x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                }); 
 
             services.AddSingleton(this.configuration);
 

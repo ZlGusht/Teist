@@ -1,0 +1,24 @@
+<div class="chart--container">
+  <h1>
+    {{this.chart.name}}
+  </h1>
+  <div class="chart--card">
+    <div *ngIf="this.chart.artists.length > 0">
+      <div class="chart--items" *ngFor="let artist of this.chart.artists">
+        {{artist.name}}
+      </div>
+    </div>
+    <div *ngIf="this.chart.albums.length > 0">
+        <div class="chart--items" *ngFor="let album of this.chart.albums">
+            {{album.name}}
+        </div>
+    </div>
+    <div *ngIf="this.chart.pieces.length > 0">
+        <div class="chart--items" *ngFor="let piece of this.chart.pieces">
+            {{piece.name}}
+        </div>
+    </div>
+  </div>
+  <div class="button--primary chart--button" (click)="goBack()">Back</div>
+  <div class="chart--description">{{this.chart.description}}</div>
+</div>

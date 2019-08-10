@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ChartComponent } from '../create/chart/chart.component';
+import { ChartComponent } from './chart/chart.component';
 import { ReviewComponent } from './review/review.component';
 import { PieceComponent } from './piece/piece.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [{
   path: 'browse',
@@ -18,6 +19,10 @@ const routes: Routes = [{
     path: 'piece',
     pathMatch: 'full',
     component: PieceComponent
+},{
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent,
 }
      
   ]

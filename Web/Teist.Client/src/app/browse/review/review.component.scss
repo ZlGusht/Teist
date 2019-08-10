@@ -1,0 +1,47 @@
+.review{
+    &--container{
+        min-height: calc(100vh - 11rem);
+        display: flex;
+    }
+
+    &--items{
+        width: 80vw;
+        min-height: 50vh;
+        margin: auto;
+        display:flex;
+        flex-direction: column;
+    }
+
+    &--item{
+        background-color: var(--color-primary);
+        height: 5rem;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        border: 2px solid var(--color-accent);
+
+        p{
+            margin: auto 2rem;
+            font-size: 3rem;
+        }
+    }
+
+    &--buttons{
+        margin: auto 2rem auto auto;
+    }
+
+    &--review{
+        height: 4rem;
+        width: 15rem;
+        display: flex;
+
+        p{
+            margin:auto;
+            font-size: 1.3rem;
+        }
+    }
+
+
+
+
+}

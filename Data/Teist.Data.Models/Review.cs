@@ -7,8 +7,10 @@
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         [Required]
-        public ApplicationUser Reviewer { get; set; }
+        public virtual ApplicationUser Reviewer { get; set; }
 
         public virtual Piece Piece { get; set; }
 
