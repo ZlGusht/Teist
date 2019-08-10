@@ -17,8 +17,6 @@
 
         public string Performer { get; set; }
 
-        public IList<string> Collaborators { get; set; }
-
         public IList<string> Pieces { get; set; }
     }
 }

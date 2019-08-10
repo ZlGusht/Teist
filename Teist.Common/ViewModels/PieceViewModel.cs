@@ -11,9 +11,6 @@
         public string Performer { get; set; }
 
         [Required]
-        public IList<string> Collaborators { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         [Required]

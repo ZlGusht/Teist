@@ -10,11 +10,11 @@
         [Required]
         public ApplicationUser Reviewer { get; set; }
 
-        public Piece Piece { get; set; }
+        public virtual Piece Piece { get; set; }
 
-        public Album Album { get; set; }
+        public virtual Album Album { get; set; }
 
-        public Artist Artist { get; set; }
+        public virtual Artist Artist { get; set; }
 
         public string Description { get; set; }
 

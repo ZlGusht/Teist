@@ -110,16 +110,15 @@
         private static void ConfigureRelations(ModelBuilder builder)
         {
             builder.Entity<Album>(album => {
-                album.HasOne(a => a.Performer).WithMany(p => p.Albums);
-                album.HasMany(a => a.Collaborators);
+                album.HasOne(a => a.Artist).WithMany(p => p.Albums);
                 album.HasMany(a => a.Pieces).WithOne(p => p.Album);
                 album.HasMany(a => a.Reviews).WithOne(r => r.Album);
-                album.HasMany(a => a.Charts);
+                album.HasOne(a => a.Chart).WithMany(c => c.Albums);
             });
             builder.Entity<Artist>(artist =>
             {
-                artist.HasMany(a => a.Albums).WithOne(a => a.Performer);
-                artist.HasMany(a => a.Pieces).WithOne(a => a.Performer);
+                artist.HasMany(a => a.Albums).WithOne(a => a.Artist);
+                artist.HasMany(a => a.Pieces).WithOne(a => a.Artist);
             });
             builder.Entity<Chart>(chart =>
             {
@@ -129,7 +128,7 @@
             });
             builder.Entity<Piece>(piece =>
             {
-                piece.HasOne(p => p.Performer).WithMany(p => p.Pieces);
+                piece.HasOne(p => p.Artist);
                 piece.HasOne(p => p.Album).WithMany(a => a.Pieces);
                 piece.HasMany(p => p.Reviews).WithOne(r => r.Piece);
             });

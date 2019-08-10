@@ -53,8 +53,7 @@ export class AlbumComponent {
     name: new FormControl(''),
     genre: new FormControl(''),
     pieces: new FormControl(''),
-    performer: new FormControl(''),
-    collaborators: new FormControl(''),
+    performer: new FormControl('')
   });
 
   constructor(private dataService: AlbumDataService,
@@ -78,17 +77,12 @@ export class AlbumComponent {
       pieces[index] = piece.name;
     });
     const performer = this.albumForm.value.performer[0].nickname;
-    let collaborators = [];
-    this.albumForm.value.collaborators.forEach((collab, index) => {
-      collaborators[index] = collab.nickname;
-    });
 
     album = {
       name: this.albumForm.value.name,
       genre: this.albumForm.value.genre,
       pieces: pieces,
       performer: performer,
-      collaborators: collaborators
     };
 
     const data = new Album(album);

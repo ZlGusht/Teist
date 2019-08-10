@@ -31,8 +31,7 @@
             {
                 Name = album.Name,
                 Genre = (Genre)Genre,
-                Performer = this.artistRepository.GetByName(album.Performer),
-                Collaborators = this.artistRepository.GetRange(album.Collaborators),
+                Artist = this.artistRepository.GetByName(album.Performer),
                 Pieces = this.pieceRepository.GetRange(album.Pieces),
             };
 
@@ -53,12 +52,10 @@
         {
             var albumToCreate = Mapper.Map<Album>(updated);
 
-            var collabs = this.artistRepository.GetRange(updated.Collaborators);
             var performer = this.artistRepository.GetByName(updated.Performer);
             var pieces = this.pieceRepository.GetRange(updated.Pieces);
 
-            albumToCreate.Collaborators = collabs;
-            albumToCreate.Performer = performer;
+            albumToCreate.Artist = performer;
             albumToCreate.Pieces = pieces;
 
 

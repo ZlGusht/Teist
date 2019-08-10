@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using Teist.Common.Enums;
     using Teist.Data.Common.Models;
 
@@ -14,11 +14,9 @@
         public string Name { get; set; }
 
         [Required]
-        public Artist Performer { get; set; }
+        public virtual Artist Artist { get; set; }
 
-        public virtual IList<Artist> Collaborators { get; set; }
-
-        public Album Album { get; set; }
+        public virtual Album Album { get; set; }
 
         [Required]
         public PieceType PieceType { get; set; }

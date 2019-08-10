@@ -1,3 +1,9 @@
-<p>
-  piece works!
-</p>
+<div class="piece--container">
+  <div class="piece--items">
+    <div class="piece--item" *ngFor="let piece of pieces">
+      <p>{{piece.performer}} - {{piece.name}} 
+        <span *ngIf="piece.collaborators"> ft. 
+          <span *ngFor="let collab of piece.collaborators">{{collab}}</span></span></p>
+    </div>
+  </div>
+</div>

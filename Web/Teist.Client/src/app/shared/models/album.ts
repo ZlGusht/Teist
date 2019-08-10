@@ -6,13 +6,11 @@ export class Album implements BaseEntity {
     genre: string;
     pieces: string;
     performer: string;
-    collaborators: string;
 
     constructor(album: any) {
     this.name = album.name;
     this.genre = album.genre;
     this.pieces = album.pieces;
     this.performer = album.performer;
-    this.collaborators = album.collaborators;
     }
 }

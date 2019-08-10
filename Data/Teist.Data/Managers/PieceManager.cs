@@ -27,20 +27,12 @@ namespace Teist.Data.Managers
             Enum.TryParse(typeof(PieceType), model.PieceType, out pieceType);
             Enum.TryParse(typeof(Genre), model.Genre, out Genre);
 
-            var collabs = new List<Artist>();
-
-            foreach (var collab in model.Collaborators)
-            {
-                collabs.Add(this.artistRepository.GetByName(collab));
-            }
-
             var piece = new Piece()
             {
                 Name = model.Name,
-                Performer = this.artistRepository.GetByName(model.Performer),
+                Artist = this.artistRepository.GetByName(model.Performer),
                 PieceType = (PieceType)pieceType,
                 Genre = (Genre)Genre,
-                Collaborators = collabs,
             };
             this.pieceRepository.Add(piece);
         }

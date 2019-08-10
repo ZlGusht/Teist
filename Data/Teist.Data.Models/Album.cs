@@ -11,22 +11,20 @@
 
         [Required]
         [MaxLength(50)]
-        public string Name { get ; set; }
+        public string Name { get; set; }
 
         [Required]
-        public IList<Piece> Pieces { get; set; }
+        public virtual IList<Piece> Pieces { get; set; }
 
         [Required]
         public Genre Genre { get; set; }
 
         [Required]
-        public Artist Performer { get; set; }
-
-        public virtual IList<Artist> Collaborators { get; set; }
+        public virtual Artist Artist { get; set; }
 
         public virtual IList<Review> Reviews { get; set; }
 
-        public virtual IList<Chart> Charts { get; set; }
+        public virtual Chart Chart { get; set; }
 
         [Range(0, 5)]
         public int Rating { get; set; }

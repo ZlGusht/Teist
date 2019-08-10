@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PieceDataService } from 'src/app/shared/services/data/piece-data.service';
 
 @Component({
   selector: 'app-piece',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PieceComponent implements OnInit {
 
-  constructor() { }
+  public pieces;
+  constructor(private pieceService: PieceDataService) { }
 
   ngOnInit() {
+    this.pieceService.getAll().then(pieces => {
+      this.pieces = pieces;
+    })
   }
 
 }

@@ -58,15 +58,9 @@ export class PieceComponent implements OnInit {
 
   public Create(){
     const performer = this.pieceForm.value.performer[0].nickname;
-    let collaborators = [];
-    if (this.pieceForm.value.collaborators != '')
-     {this.pieceForm.value.collaborators.forEach((collab, index) => {
-      collaborators[index] = collab.nickname;
-    });
-    }
     
     const piece = {name: this.pieceForm.value.name, genre: this.pieceForm.value.genre, pieceType: this.pieceForm.value.pieceType}
-    const data = new Piece(piece, performer, collaborators);
+    const data = new Piece(piece, performer);
     
     this.pieceDataService.create(data);
   }

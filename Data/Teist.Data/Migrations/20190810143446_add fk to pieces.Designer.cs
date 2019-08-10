@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Teist.Data;
 
 namespace Teist.Data.Migrations
 {
     [DbContext(typeof(TeistDbContext))]
-    partial class TeistDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190810143446_add fk to pieces")]
+    partial class addfktopieces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,8 +113,6 @@ namespace Teist.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtistId");
-
                     b.Property<int?>("ChartId");
 
                     b.Property<DateTime>("CreatedOn");
@@ -129,15 +129,17 @@ namespace Teist.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int>("PerformerId");
+
                     b.Property<int>("Rating");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
-
                     b.HasIndex("ChartId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PerformerId");
 
                     b.ToTable("Albums");
                 });
@@ -243,6 +245,8 @@ namespace Teist.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AlbumId");
+
                     b.Property<int?>("ChartId");
 
                     b.Property<DateTime>("CreatedOn");
@@ -263,13 +267,19 @@ namespace Teist.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int?>("PieceId");
+
                     b.Property<int>("Rating");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlbumId");
+
                     b.HasIndex("ChartId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PieceId");
 
                     b.ToTable("Artists");
                 });
@@ -279,6 +289,8 @@ namespace Teist.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AlbumId");
 
                     b.Property<DateTime>("CreatedOn");
 
@@ -299,6 +311,8 @@ namespace Teist.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AlbumId");
+
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Charts");
@@ -311,8 +325,6 @@ namespace Teist.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("AlbumId");
-
-                    b.Property<int>("ArtistId");
 
                     b.Property<int?>("ChartId");
 
@@ -329,6 +341,8 @@ namespace Teist.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int>("PerformerId");
+
                     b.Property<int>("PieceType");
 
                     b.Property<int>("Rating");
@@ -337,11 +351,11 @@ namespace Teist.Data.Migrations
 
                     b.HasIndex("AlbumId");
 
-                    b.HasIndex("ArtistId");
-
                     b.HasIndex("ChartId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PerformerId");
 
                     b.ToTable("Pieces");
                 });
@@ -435,21 +449,36 @@ namespace Teist.Data.Migrations
 
             modelBuilder.Entity("Teist.Data.Models.Album", b =>
                 {
-                    b.HasOne("Teist.Data.Models.Artist", "Artist")
-                        .WithMany("Albums")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Teist.Data.Models.Chart", "Chart")
+                    b.HasOne("Teist.Data.Models.Chart")
                         .WithMany("Albums")
                         .HasForeignKey("ChartId");
+
+                    b.HasOne("Teist.Data.Models.Artist", "Performer")
+                        .WithMany("Albums")
+                        .HasForeignKey("PerformerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Teist.Data.Models.Artist", b =>
                 {
+                    b.HasOne("Teist.Data.Models.Album")
+                        .WithMany("Collaborators")
+                        .HasForeignKey("AlbumId");
+
                     b.HasOne("Teist.Data.Models.Chart")
                         .WithMany("Artists")
                         .HasForeignKey("ChartId");
+
+                    b.HasOne("Teist.Data.Models.Piece")
+                        .WithMany("Collaborators")
+                        .HasForeignKey("PieceId");
+                });
+
+            modelBuilder.Entity("Teist.Data.Models.Chart", b =>
+                {
+                    b.HasOne("Teist.Data.Models.Album")
+                        .WithMany("Charts")
+                        .HasForeignKey("AlbumId");
                 });
 
             modelBuilder.Entity("Teist.Data.Models.Piece", b =>
@@ -458,14 +487,14 @@ namespace Teist.Data.Migrations
                         .WithMany("Pieces")
                         .HasForeignKey("AlbumId");
 
-                    b.HasOne("Teist.Data.Models.Artist", "Artist")
-                        .WithMany("Pieces")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Teist.Data.Models.Chart")
                         .WithMany("Pieces")
                         .HasForeignKey("ChartId");
+
+                    b.HasOne("Teist.Data.Models.Artist", "Performer")
+                        .WithMany("Pieces")
+                        .HasForeignKey("PerformerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Teist.Data.Models.Review", b =>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Teist.Data;
 
 namespace Teist.Data.Migrations
 {
     [DbContext(typeof(TeistDbContext))]
-    partial class TeistDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190810155237_removed collaborations")]
+    partial class removedcollaborations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
