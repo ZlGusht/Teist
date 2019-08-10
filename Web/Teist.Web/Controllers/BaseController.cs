@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Route("api/[controller]")]
     public abstract class BaseController : Controller
     {
     }

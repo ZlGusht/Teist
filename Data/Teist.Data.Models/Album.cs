@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Teist.Common.Enums;
     using Teist.Data.Common.Models;
 
     public class Album : BaseDeletableModel<int>
@@ -14,6 +15,9 @@
 
         [Required]
         public IList<Piece> Pieces { get; set; }
+
+        [Required]
+        public Genre Genre { get; set; }
 
         [Required]
         public Artist Performer { get; set; }

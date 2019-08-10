@@ -16,14 +16,17 @@
         [Required]
         public Artist Performer { get; set; }
 
+        public virtual IList<Artist> Collaborators { get; set; }
+
         public Album Album { get; set; }
 
         [Required]
         public PieceType PieceType { get; set; }
 
-        public virtual IList<Review> Reviews { get; set; }
+        [Required]
+        public Genre Genre { get; set; }
 
-        public Chart Chart { get; set; }
+        public virtual IList<Review> Reviews { get; set; }
 
         [Range(0, 5)]
         public int Rating { get; set; }

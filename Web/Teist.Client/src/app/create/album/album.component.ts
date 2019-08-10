@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AlbumDataService } from 'src/app/shared/services/data/album-data.service';
 import { Album } from 'src/app/shared/models/album';
+import { Genre } from 'src/app/shared/enums/genre';
+import { PieceDataService } from 'src/app/shared/services/data/piece-data.service';
+import { ArtistDataService } from 'src/app/shared/services/data/artist-data.service';
 
 @Component({
   selector: 'app-album',
@@ -10,8 +13,42 @@ import { Album } from 'src/app/shared/models/album';
 })
 export class AlbumComponent {
 
-  constructor(private dataService: AlbumDataService) {
-  }
+  public genres = Object.keys(Genre).splice(9);
+
+  public artists;
+
+  public pieces;
+
+  public dropdownSettings = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'nickname',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 10,
+    allowSearchFilter: true
+  };
+
+  public dropdownSettingsSingle = {
+    singleSelection: true,
+    idField: 'id',
+    textField: 'nickname',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 10,
+    allowSearchFilter: true
+  };
+  
+  public dropdownSettingsPieces = {
+    singleSelection: false,
+    idField: 'id',
+    textField: 'name',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 10,
+    allowSearchFilter: true
+  };
+
   public albumForm = new FormGroup({
     name: new FormControl(''),
     genre: new FormControl(''),
@@ -20,12 +57,42 @@ export class AlbumComponent {
     collaborators: new FormControl(''),
   });
 
-  public Create() {
-    this.dataService.create(this.CreateModel(this.albumForm.value));
+  constructor(private dataService: AlbumDataService,
+    private artistDataService: ArtistDataService, private pieceDataService: PieceDataService) {
   }
 
-  private CreateModel(album: any): Album {
-    const performer = album.value.performer.Split(',');
-    return new Album(album);
+
+  ngOnInit(): void {
+    this.artistDataService.getAll().then(artists => {
+      this.artists = artists;
+    })
+
+    this.pieceDataService.getAll().then(pieces => {
+      this.pieces = pieces;
+    })
+  }
+  public Create() {
+    let album;
+    let pieces = [];
+    this.albumForm.value.pieces.forEach((piece, index) => {
+      pieces[index] = piece.name;
+    });
+    const performer = this.albumForm.value.performer[0].nickname;
+    let collaborators = [];
+    this.albumForm.value.collaborators.forEach((collab, index) => {
+      collaborators[index] = collab.nickname;
+    });
+
+    album = {
+      name: this.albumForm.value.name,
+      genre: this.albumForm.value.genre,
+      pieces: pieces,
+      performer: performer,
+      collaborators: collaborators
+    };
+
+    const data = new Album(album);
+
+    this.dataService.create(data);
   }
 }

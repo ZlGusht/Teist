@@ -15,6 +15,6 @@
 
         public string LastName { get; set; }
 
-        public Genre Genre { get; set; }
+        public string Genre { get; set; }
     }
 }

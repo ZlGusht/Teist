@@ -14,6 +14,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select'; 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { MatInputModule } from '@angular/material';
     MatRadioModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [ChartComponent, PieceComponent, ReviewComponent, AlbumComponent, ArtistComponent]
 })

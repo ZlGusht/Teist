@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using Teist.Common.Enums;
     using Teist.Data.Common.Models;
 
     public class Artist : BaseDeletableModel<int>
@@ -12,6 +12,8 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public Genre Genre { get; set; }
 
         [Required]
         [MaxLength(50)]

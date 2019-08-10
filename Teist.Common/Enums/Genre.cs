@@ -11,5 +11,6 @@
         KPop = 7,
         LoFiHH = 8,
         HipHop = 9,
+        Other = 10,
     }
 }

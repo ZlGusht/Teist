@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Teist.Data;
 
 namespace Teist.Data.Migrations
 {
     [DbContext(typeof(TeistDbContext))]
-    partial class TeistDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190810092447_artist creation migration")]
+    partial class artistcreationmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,6 +247,8 @@ namespace Teist.Data.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<int>("Genre");
+
                     b.Property<bool>("IsDeleted");
 
                     b.Property<string>("LastName");
@@ -314,6 +318,9 @@ namespace Teist.Data.Migrations
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<int>("PerformerId");
 

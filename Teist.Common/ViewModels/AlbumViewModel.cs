@@ -13,7 +13,7 @@
         public string Name { get; set; }
 
         [Required]
-        public Genre Genre { get; set; }
+        public string Genre { get; set; }
 
         public string Performer { get; set; }
 

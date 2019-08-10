@@ -17,8 +17,8 @@
         public string Name { get; set; }
 
         [Required]
-        public PieceType PieceType { get; set; }
+        public string PieceType { get; set; }
 
-        public string Chart { get; set; }
+        public string Genre { get; set; }
     }
 }

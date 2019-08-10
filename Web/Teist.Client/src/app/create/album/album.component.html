@@ -1,54 +1,37 @@
 <div class="album--container">
     <form class="album--card" [formGroup]="albumForm">
       <input type="text" placeholder="Name" formControlName="name">
-      <input type="text" placeholder="Genre" formControlName="genre">
-  
+
       <mat-form-field>
-        <mat-chip-list #chipList>
-          <mat-chip
-            *ngFor="let fruit of fruits"
-            [selectable]="selectable"
-            [removable]="removable"
-            (removed)="remove(fruit)">
-            {{fruit}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input
-            placeholder="New fruit..."
-            #fruitInput
-            [formControl]="fruitCtrl"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-            {{fruit}}
+        <mat-label>Genre</mat-label>
+        <mat-select formControlName="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{genre}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-select>
       </mat-form-field>
-  
-      <mat-form-field>
-        <input type="text" placeholder="Collaborators" aria-label="Number" matInput fromControlName="collaborators"
-          [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of artists | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-  
-      <mat-form-field>
-          <input type="text" placeholder="Pieces" aria-label="Number" matInput fromControlName="pieces"
-            [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of artists | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+
+      <ng-multiselect-dropdown 
+    [placeholder]="'Pieces'" 
+    [data]="pieces" 
+    formControlName="pieces"
+    [settings]="dropdownSettingsPieces">
+    </ng-multiselect-dropdown>
+
+    <ng-multiselect-dropdown 
+    [placeholder]="'Collaborators'" 
+    [data]="artists" 
+    formControlName="collaborators"
+    [settings]="dropdownSettings">
+    </ng-multiselect-dropdown>
+
+    <ng-multiselect-dropdown 
+    [placeholder]="'Performer'" 
+    [data]="artists" 
+    formControlName="performer"
+    [settings]="dropdownSettingsSingle">
+    </ng-multiselect-dropdown>
+
 
       <div class="button--primary" (click)="Create()">
         <p>Create</p>

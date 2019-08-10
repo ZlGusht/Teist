@@ -14,6 +14,10 @@
 
         public Album Album { get; set; }
 
+        public Artist Artist { get; set; }
+
+        public string Description { get; set; }
+
         [Range(0, 5)]
         public int Rating { get; set; }
     }

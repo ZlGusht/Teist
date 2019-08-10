@@ -13,8 +13,14 @@
         [MaxLength(50)]
         public string Name { get; set; }
 
-        [Required]
         public virtual IList<Piece> Pieces { get; set; }
+
+        public virtual IList<Artist> Artists { get; set; }
+
+        public virtual IList<Album> Albums { get; set; }
+
+        [Required]
+        public string Description { get; set; }
 
         [Range(0, 5)]
         public int Rating { get; set; }

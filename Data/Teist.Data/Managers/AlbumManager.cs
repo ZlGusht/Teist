@@ -1,11 +1,13 @@
 ﻿namespace Teist.Data.Managers
 {
     using AutoMapper;
+    using System;
     using System.Collections.Generic;
 
     using Teist.Common.ViewModels;
     using Teist.Data.Models;
     using Teist.Data.Repositories;
+    using Teist.Common.Enums;
 
     public class AlbumManager
     {
@@ -22,15 +24,17 @@
 
         public void CreateAlbum(AlbumViewModel album)
         {
-            var albumToCreate = Mapper.Map<Album>(album);
+            Object Genre;
 
-            var collabs = this.artistRepository.GetRange(album.Collaborators);
-            var performer = this.artistRepository.GetByName(album.Performer);
-            var pieces = this.pieceRepository.GetRange(album.Pieces);
-
-            albumToCreate.Collaborators = collabs;
-            albumToCreate.Performer = performer;
-            albumToCreate.Pieces = pieces;
+            Enum.TryParse(typeof(Genre), album.Genre, out Genre);
+            var albumToCreate = new Album()
+            {
+                Name = album.Name,
+                Genre = (Genre)Genre,
+                Performer = this.artistRepository.GetByName(album.Performer),
+                Collaborators = this.artistRepository.GetRange(album.Collaborators),
+                Pieces = this.pieceRepository.GetRange(album.Pieces),
+            };
 
             this.albumRepository.Add(albumToCreate);
         }

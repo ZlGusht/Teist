@@ -1,9 +1,18 @@
 <div class="artist--container" >
   <form class="artist--card" [formGroup]="artistForm">
     <input type="text" placeholder="Name" formControlName="name">
-    <input type="text" placeholder="Name" formControlName="firstName">
-    <input type="text" placeholder="Name" formControlName="lastName">
-    <input type="text" placeholder="Genre" formControlName="genre">
+    <input type="text" placeholder="First Name" formControlName="firstName">
+    <input type="text" placeholder="Last Name" formControlName="lastName">
+    
+    <mat-form-field>
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre">
+          {{genre}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <div class="button--primary" (click)="Create()"><p>Create</p></div>
   </form>
 </div>

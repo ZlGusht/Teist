@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication/au
 })
 export class RegisterComponent {
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   public inputs = new FormGroup({
@@ -25,7 +27,12 @@ export class RegisterComponent {
   });
 
   public Register() {
-  this.authenticationService.Register(this.inputs.value);
+  this.authenticationService.Register(this.inputs.value).subscribe(
+    () => { },
+    (error: HttpErrorResponse) => {});
+
+    this.router.navigate(['/home']);
   }
+  
 
 }

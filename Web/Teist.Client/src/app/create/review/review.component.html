@@ -3,15 +3,44 @@
       <input type="text" placeholder="Name" formControlName="name">
   
       <mat-form-field>
-        <input type="text" placeholder="Target" aria-label="Number" matInput fromControlName="target"
-          [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of targets | async" [value]="option">
-            {{option}}
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" (selectionChange)="OnSelect($event)">
+          <mat-option *ngFor="let contentType of types" [value]="contentType">
+            {{contentType}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-select>
       </mat-form-field>
-      <textarea  placeholder="Description" formControlName="desription"></textarea>
+  
+      <ng-container *ngIf="reviewForm.value.type === 'Artist'">
+        <ng-multiselect-dropdown 
+        [placeholder]="'Contents'" 
+        [data]="artists" 
+        formControlName="target"
+        [settings]="artistSettings">
+        </ng-multiselect-dropdown>
+      </ng-container>
+  
+      
+      <ng-container *ngIf="reviewForm.value.type === 'Album'">
+        <ng-multiselect-dropdown 
+        [placeholder]="'Contents'" 
+        [data]="albums" 
+        formControlName="target"
+        [settings]="albumSettings">
+        </ng-multiselect-dropdown>
+      </ng-container>
+  
+      
+      <ng-container *ngIf="reviewForm.value.type == 'Piece'">
+        <ng-multiselect-dropdown 
+        [placeholder]="'Contents'" 
+        [data]="pieces" 
+        formControlName="target"
+        [settings]="pieceSettings">
+        </ng-multiselect-dropdown>
+      </ng-container>
+
+      <textarea placeholder="Description" formControlName="description"></textarea>
   
       <div class="button--primary" (click)="Create()">
         <p>Create</p>

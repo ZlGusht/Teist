@@ -1,10 +1,11 @@
 ﻿namespace Teist.Web.Controllers
 {
-
     using Microsoft.AspNetCore.Mvc;
     using Teist.Common.ViewModels;
     using Teist.Data.Managers;
 
+    [Route("api/[controller]")]
+    [ApiController]
     public class AlbumController : BaseController
     {
         private readonly AlbumManager manager;
@@ -20,7 +21,7 @@
             return this.Ok(this.manager.GetAll());
         }
 
-        [HttpGet]
+        [HttpGet("{name}", Name = "GetAlbum")]
         public IActionResult Get(string name)
         {
             return this.Ok(this.manager.Get(name));
@@ -33,6 +34,7 @@
             {
                 return this.BadRequest();
             }
+
             this.manager.CreateAlbum(album);
             return this.Ok();
         }

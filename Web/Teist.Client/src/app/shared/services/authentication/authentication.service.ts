@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Configuration } from '../../config/app.config';
 import { TokenService } from '../token/token.service';
 import { map, catchError } from 'rxjs/operators';
@@ -47,11 +47,18 @@ export class AuthenticationService {
     this.config.restApi.authentication.register, form);
 
     request = request.clone({headers: this.headers});
+    console.log(request);
 
-    this.http.request(request).pipe(
-      map((data: any) => {
-      this.tokenService.setToken(data);
-  }));
+    return this.http.post(this.config.restApi.prefix + 
+      this.config.restApi.authentication.register, form, {headers: new HttpHeaders().set('Content-Type', 'application/json')})
+      .pipe(map((data: any) => {
+        this.LogIn({email: form.email, password: form.password}).subscribe(
+          () => { },
+          (error: HttpErrorResponse) => {});
+
+        return EmptyObservable.create();
+    }),
+    catchError(err => ErrorObservable.create(err)));
   }
 
   protected makeRequestOptions(method, url, optional?): HttpRequest<any> {

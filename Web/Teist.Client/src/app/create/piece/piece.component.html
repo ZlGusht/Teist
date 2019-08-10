@@ -1,28 +1,38 @@
 <div class="piece--container">
   <form class="piece--card" [formGroup]="pieceForm">
     <input type="text" placeholder="Name" formControlName="name">
-    <input type="text" placeholder="Genre" formControlName="genre">
-    <input type="text" placeholder="Type" formControlName="pieceType">
 
     <mat-form-field>
-      <input type="text" placeholder="Artist" aria-label="Number" matInput fromControlName="performer"
-        [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of artists | async" [value]="option">
-          {{option}}
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genre">
+        <mat-option *ngFor="let genre of genres" [value]="genre">
+          {{genre}}
         </mat-option>
-      </mat-autocomplete>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input type="text" placeholder="Collaborators" aria-label="Number" matInput fromControlName="collaborators"
-        [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of artists | async" [value]="option">
-          {{option}}
+      <mat-label>Piece Type</mat-label>
+      <mat-select formControlName="pieceType">
+        <mat-option *ngFor="let pieceType of pieceTypes" [value]="pieceType">
+          {{pieceType}}
         </mat-option>
-      </mat-autocomplete>
+      </mat-select>
     </mat-form-field>
+
+    <ng-multiselect-dropdown 
+    [placeholder]="'Performer'" 
+    [data]="artists" 
+    formControlName="performer"
+    [settings]="single">
+    </ng-multiselect-dropdown>
+
+    <ng-multiselect-dropdown 
+    [placeholder]="'Collaborators'" 
+    [data]="artists" 
+    formControlName="collaborators"
+    [settings]="dropdownSettings">
+    </ng-multiselect-dropdown>
 
     <div class="button--primary" (click)="Create()">
       <p>Create</p>

@@ -1,20 +1,47 @@
 <div class="chart--container">
   <form class="chart--card" [formGroup]="chartForm">
     <input type="text" placeholder="Name" formControlName="name">
-    <mat-radio-group formControlName="type">
-      <mat-radio-button value="Song">Songs</mat-radio-button>
-      <mat-radio-button value="Album">Album</mat-radio-button>
-    </mat-radio-group>
-    <textarea placeholder="Description" formControlName="description"></textarea>
 
     <mat-form-field>
-      <input type="text" placeholder="{{chartForm.value.type}}" aria-label="Number" matInput fromControlName="contents" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of contents | async" [value]="option">
-          {{option}}
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type" (selectionChange)="OnSelect($event)">
+        <mat-option *ngFor="let contentType of types" [value]="contentType">
+          {{contentType}}
         </mat-option>
-      </mat-autocomplete>
+      </mat-select>
     </mat-form-field>
+
+    <ng-container *ngIf="chartForm.value.type === 'Artist'">
+      <ng-multiselect-dropdown 
+      [placeholder]="'Contents'" 
+      [data]="artists" 
+      formControlName="contents"
+      [settings]="artistSettings">
+      </ng-multiselect-dropdown>
+    </ng-container>
+
+    
+    <ng-container *ngIf="chartForm.value.type === 'Album'">
+      <ng-multiselect-dropdown 
+      [placeholder]="'Contents'" 
+      [data]="albums" 
+      formControlName="contents"
+      [settings]="albumSettings">
+      </ng-multiselect-dropdown>
+    </ng-container>
+
+    
+    <ng-container *ngIf="chartForm.value.type == 'Piece'">
+      <ng-multiselect-dropdown 
+      [placeholder]="'Contents'" 
+      [data]="pieces" 
+      formControlName="contents"
+      [settings]="pieceSettings">
+      </ng-multiselect-dropdown>
+    </ng-container>
+    
+
+    <textarea placeholder="Description" formControlName="description"></textarea>
 
     <div class="button--primary" (click)="Create()">
       <p>Create</p>

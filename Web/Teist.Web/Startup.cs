@@ -110,13 +110,14 @@
             services.AddScoped(typeof(ChartRepository));
             services.AddScoped(typeof(PieceRepository));
             services.AddScoped(typeof(ReviewRepository));
+            services.AddScoped(typeof(UserRepository));
 
             // Managers
             services.AddScoped(typeof(AlbumManager));
             services.AddScoped(typeof(ArtistManager));
             services.AddScoped(typeof(ChartManager));
             services.AddScoped(typeof(PieceManager));
-            services.AddScoped(typeof(ReviewRepository));
+            services.AddScoped(typeof(ReviewManager));
 
 
             // Application services

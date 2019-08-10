@@ -124,13 +124,14 @@
             builder.Entity<Chart>(chart =>
             {
                 chart.HasMany(a => a.Pieces);
+                chart.HasMany(a => a.Albums);
+                chart.HasMany(a => a.Artists);
             });
             builder.Entity<Piece>(piece =>
             {
                 piece.HasOne(p => p.Performer).WithMany(p => p.Pieces);
                 piece.HasOne(p => p.Album).WithMany(a => a.Pieces);
                 piece.HasMany(p => p.Reviews).WithOne(r => r.Piece);
-                piece.HasOne(p => p.Chart);
             });
             builder.Entity<Review>(review =>
             {
