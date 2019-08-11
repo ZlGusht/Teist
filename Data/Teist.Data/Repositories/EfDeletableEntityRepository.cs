@@ -47,6 +47,7 @@
         public void HardDelete(TEntity entity)
         {
             base.Delete(entity);
+            this.Context.SaveChanges();
         }
 
         public void Undelete(TEntity entity)

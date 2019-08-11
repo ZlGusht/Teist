@@ -6,6 +6,7 @@ export class Artist implements BaseEntity {
     genre: string;
     firstName: string;
     lastName: string;
+    name: string;
 
     constructor(artist: any) {
     this.nickname = artist.name; 

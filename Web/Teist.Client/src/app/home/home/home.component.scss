@@ -1,0 +1,36 @@
+.home{
+    &--container{
+        height: calc(100vh - 11rem);
+        display: flex;
+    }
+
+    &--card{
+        height: 70vh;
+        width: 60vw;
+        margin: auto;
+        background-color: white;
+        border-radius: 1rem;
+        font-size: 6rem;
+        display: flex;
+        flex-direction: column;
+
+        p{
+            height: 6rem;
+            text-align: center;
+        }
+
+        
+    }
+
+    &--item{
+        margin: auto;
+        width: 30vw;
+        text-align: center;
+    }
+
+    &--greeting{
+        text-align: center;
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+    }
+}

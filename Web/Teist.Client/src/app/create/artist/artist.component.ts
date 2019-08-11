@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Genre } from 'src/app/shared/enums/genre';
 import { Artist } from 'src/app/shared/models/artist';
 import { ArtistDataService } from 'src/app/shared/services/data/artist-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artist',
@@ -20,10 +21,12 @@ export class ArtistComponent {
     lastName: new FormControl('')
   });
 
-  constructor(private readonly dataService: ArtistDataService){}
+  constructor(private readonly dataService: ArtistDataService, private router: Router){}
 
   public Create(){
     var artist = new Artist(this.artistForm.value);
-    this.dataService.create(artist);
+    this.dataService.create(artist).then(() => {
+      this.router.navigateByUrl('home');
+    });
   }
 }

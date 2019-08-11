@@ -1,6 +1,6 @@
 <div class="piece--container">
   <h1>
-    {{this.piece.name}}
+    {{this.piece.name}}  <span (click)="Delete(this.piece)">X</span> <i class="fas fa-pen" (click)="Update(this.piece)"></i>
   </h1>
   <div class="piece--card">
     <p>By {{this.piece.artist.nickname}}</p>

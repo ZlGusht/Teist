@@ -6,6 +6,7 @@ import { ArtistDataService } from 'src/app/shared/services/data/artist-data.serv
 import { Type } from 'src/app/shared/enums/type';
 import { ReviewDataService } from 'src/app/shared/services/data/review-data.service';
 import { Review } from 'src/app/shared/models/review';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -64,7 +65,8 @@ export class ReviewComponent {
   constructor(private reviewService: ReviewDataService,
     private pieceService: PieceDataService,
     private albumService: AlbumDataService,
-    private artistService: ArtistDataService) {
+    private artistService: ArtistDataService,
+    private router: Router) {
 
   }
 
@@ -98,10 +100,12 @@ export class ReviewComponent {
       type: this.reviewForm.value.type,
       description: this.reviewForm.value.description,
     }
+    history.state.data = undefined;
 
     var data = new Review(review);
-    this.reviewService.create(data);
-    history.state.data = undefined;
+    this.reviewService.create(data).then(() => {
+      this.router.navigateByUrl('home');
+    });
   }
 
   public OnSelect(event: any) {

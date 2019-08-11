@@ -16,7 +16,7 @@ export class PieceComponent implements OnInit {
   ngOnInit() {
     this.pieceService.getAll().then(pieces => {
       this.pieces = pieces;
-    })
+    });
   }
   
   public isLogged(){

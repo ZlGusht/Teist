@@ -6,6 +6,7 @@ import { AlbumDataService } from 'src/app/shared/services/data/album-data.servic
 import { ArtistDataService } from 'src/app/shared/services/data/artist-data.service';
 import { Type } from 'src/app/shared/enums/type';
 import { Chart } from 'src/app/shared/models/chart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chart',
@@ -60,7 +61,8 @@ export class ChartComponent {
   constructor(private chartService: ChartDataService,
     private pieceService: PieceDataService,
     private albumService: AlbumDataService,
-    private artistService: ArtistDataService) {
+    private artistService: ArtistDataService,
+    private router: Router) {
 
   }
 
@@ -96,7 +98,9 @@ export class ChartComponent {
     };
     var data = new Chart(chart);
 
-    this.chartService.create(data);
+    this.chartService.create(data).then(() => {
+      this.router.navigateByUrl('home');
+    });
   }
 
   public OnSelect(event: any) {

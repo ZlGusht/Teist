@@ -44,14 +44,16 @@ namespace Teist.Web.Controllers
 
         // PUT: api/Piece/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(string id, [FromBody] PieceViewModel piece)
         {
+            this.manager.Update(id, piece);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            this.manager.Delete(id);
         }
     }
 }

@@ -5,6 +5,7 @@ import { Album } from 'src/app/shared/models/album';
 import { Genre } from 'src/app/shared/enums/genre';
 import { PieceDataService } from 'src/app/shared/services/data/piece-data.service';
 import { ArtistDataService } from 'src/app/shared/services/data/artist-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-album',
@@ -57,7 +58,7 @@ export class AlbumComponent {
   });
 
   constructor(private dataService: AlbumDataService,
-    private artistDataService: ArtistDataService, private pieceDataService: PieceDataService) {
+    private artistDataService: ArtistDataService, private pieceDataService: PieceDataService, private router: Router) {
   }
 
 
@@ -87,6 +88,8 @@ export class AlbumComponent {
 
     const data = new Album(album);
 
-    this.dataService.create(data);
+    this.dataService.create(data).then(() => {
+      this.router.navigateByUrl('home');
+    });
   }
 }

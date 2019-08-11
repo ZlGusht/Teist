@@ -27,8 +27,12 @@
     [settings]="single">
     </ng-multiselect-dropdown>
 
-    <div class="button--primary" (click)="Create()">
+    <div class="button--primary" (click)="Create()" *ngIf="!isEdit">
       <p>Create</p>
     </div>
+    
+    <div class="button--primary" (click)="UpdateEntity()" *ngIf="isEdit">
+        <p>Update</p>
+      </div>
   </form>
 </div>

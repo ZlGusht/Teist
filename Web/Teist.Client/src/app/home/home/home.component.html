@@ -1,3 +1,14 @@
-<p>
-  home works!
-</p>
+<div class="home--container">
+  <div class="home--card">
+    <div class="home--greeting">
+      Welcome, {{userName}}
+    </div>
+    <p>Get Started By: </p>
+    <div class="home--item button--primary" (click)="Create()">
+      Creating
+    </div>
+    <div class="home--item button--primary" (click)="Browse()">
+      Browsing
+    </div>
+  </div>
+</div>

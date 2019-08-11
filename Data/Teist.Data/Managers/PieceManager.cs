@@ -41,5 +41,16 @@ namespace Teist.Data.Managers
         {
             return this.pieceRepository.All();
         }
+
+        public void Update(string id, PieceViewModel piece)
+        {
+            this.pieceRepository.HardDelete(this.pieceRepository.GetByName(id));
+            this.Create(piece);
+        }
+
+        public void Delete(string id)
+        {
+            this.pieceRepository.Delete(this.pieceRepository.GetByName(id));
+        }
     }
 }

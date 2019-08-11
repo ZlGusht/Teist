@@ -15,4 +15,7 @@ export class HeaderComponent {
     return this.tokenService.isLoggedIn;
   }
 
+  public LogOut() {
+    this.tokenService.removeToken();
+  }
 }

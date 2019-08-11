@@ -57,5 +57,11 @@ export class TokenService {
     this.authenticationModel.uniqueName = decodedToken.sub;
     this.authenticationModel.token = token;
   }
+
+  get userName() {
+    if (this.token) {
+      return this.authenticationModel.uniqueName
+    }
+  }
 }
 

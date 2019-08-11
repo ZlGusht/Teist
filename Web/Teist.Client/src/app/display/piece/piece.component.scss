@@ -10,7 +10,15 @@
             color: white;
             font-size: 5rem;
             width: 70vw;
-            text-align: center; 
+            text-align: center;
+            
+            span, i{
+                color: var(--color-accent);
+            }
+
+            i{
+                margin: 2rem;
+            }
         }
     }
 

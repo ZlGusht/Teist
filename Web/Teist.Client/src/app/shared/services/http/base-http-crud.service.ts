@@ -94,8 +94,8 @@ export abstract class BaseHttpCrudService<TEntity extends BaseEntity> {
    * Updates an entity
    * @param entity - the updated entity
    */
-  public update(entity: TEntity) {
-    const url = `${this.apiUrl}/${entity.id}`;
+  public update(name: string, entity: TEntity) {
+    const url = `${this.apiUrl}/${name}`;
 
     const request = this.makeRequestOptions('PUT', url, entity);
 

@@ -28,10 +28,9 @@ export class RegisterComponent {
 
   public Register() {
   this.authenticationService.Register(this.inputs.value).subscribe(
-    () => { },
+    () => {
+      this.router.navigateByUrl('home'); },
     (error: HttpErrorResponse) => {});
-
-    this.router.navigate(['/home']);
   }
   
 
