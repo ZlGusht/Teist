@@ -30,7 +30,7 @@
         [HttpPost]
         public IActionResult Post([FromBody] AlbumViewModel album)
         {
-            if (album == null)
+            if (album == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }

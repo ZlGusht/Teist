@@ -28,25 +28,32 @@ namespace Teist.Web.Controllers
             return this.manager.GetAll();
         }
 
-        // GET: api/Piece/5
-        [HttpGet("{name}", Name = "GetPiece")]
-        public Piece Get(string name)
-        {
-            return null;
-        }
-
         // POST: api/Piece
         [HttpPost]
-        public void Post([FromBody] PieceViewModel piece)
+        public IActionResult Post([FromBody] PieceViewModel piece)
         {
+            if (piece == null || !this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
             this.manager.Create(piece);
+
+            return this.Ok();
         }
 
         // PUT: api/Piece/5
         [HttpPut("{id}")]
-        public void Put(string id, [FromBody] PieceViewModel piece)
+        public IActionResult Put(string id, [FromBody] PieceViewModel piece)
         {
+            if (id == null || piece == null || !this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
             this.manager.Update(id, piece);
+
+            return this.Ok();
         }
 
         // DELETE: api/ApiWithActions/5

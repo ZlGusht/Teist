@@ -24,18 +24,11 @@
             return this.manager.GetAll();
         }
 
-        // GET: api/Artist/5
-        [HttpGet("{name}", Name = "GetArtist")]
-        public Artist Get(string name)
-        {
-            return null;
-        }
-
         // POST: api/Artist
         [HttpPost]
         public IActionResult Post([FromBody] ArtistViewModel artist)
         {
-            if (artist == null)
+            if (artist == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
@@ -43,18 +36,6 @@
             this.manager.Create(artist);
 
             return this.Ok();
-        }
-
-        // PUT: api/Artist/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
