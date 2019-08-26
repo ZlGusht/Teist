@@ -7,14 +7,21 @@
     public class ArtistViewModel
     {
         [Required]
-        [MinLength(2)]
-        [MaxLength(50)]
+        [MinLength(GlobalConstants.entityMinLength)]
+        [MaxLength(GlobalConstants.entityMaxLength)]
         public string Nickname { get; set; }
 
+        [Required]
+        [MinLength(GlobalConstants.entityMinLength)]
+        [MaxLength(GlobalConstants.entityMaxLength)]
         public string FirstName { get; set; }
 
+        [Required]
+        [MinLength(GlobalConstants.entityMinLength)]
+        [MaxLength(GlobalConstants.entityMaxLength)]
         public string LastName { get; set; }
 
+        [Required]
         public string Genre { get; set; }
     }
 }

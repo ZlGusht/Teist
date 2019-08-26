@@ -16,6 +16,7 @@
         [Required]
         public string PieceType { get; set; }
 
+        [Required]
         public string Genre { get; set; }
     }
 }
