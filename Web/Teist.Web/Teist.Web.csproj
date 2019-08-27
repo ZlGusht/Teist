@@ -30,7 +30,6 @@
     <ProjectReference Include="..\..\Data\Teist.Data.Models\Teist.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\Teist.Data\Teist.Data.csproj" />
     <ProjectReference Include="..\..\Services\Teist.Services.Messaging\Teist.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\Teist.Services\Teist.Services.csproj" />
     <ProjectReference Include="..\Teist.Web.Infrastructure\Teist.Web.Infrastructure.csproj" />
   </ItemGroup>
   

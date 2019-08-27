@@ -1,4 +1,4 @@
-﻿namespace Teist.Data.Managers
+﻿namespace Teist.Services.Managers
 {
     using AutoMapper;
     using System;

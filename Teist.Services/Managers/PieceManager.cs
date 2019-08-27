@@ -6,7 +6,7 @@ using Teist.Common.ViewModels;
 using Teist.Data.Models;
 using Teist.Data.Repositories;
 
-namespace Teist.Data.Managers
+namespace Teist.Services.Managers
 {
     public class PieceManager
     {
