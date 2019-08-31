@@ -3,8 +3,8 @@
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
     using Teist.Common.ViewModels;
-    using Teist.Data.Managers;
     using Teist.Data.Models;
+    using Teist.Services;
 
     [Route("api/[controller]")]
     [ApiController]

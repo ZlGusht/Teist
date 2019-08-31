@@ -1,4 +1,4 @@
-﻿namespace Teist.Services.Managers
+﻿namespace Teist.Services
 {
     using AutoMapper;
     using System;
@@ -22,7 +22,7 @@
             this.pieceRepository = pieceRepository;
         }
 
-        public void CreateAlbum(AlbumViewModel album)
+        public Album CreateAlbum(AlbumViewModel album)
         {
             Object Genre;
 
@@ -36,6 +36,7 @@
             };
 
             this.albumRepository.Add(albumToCreate);
+            return albumToCreate;
         }
 
         public IEnumerable<Album> GetAll()
@@ -50,26 +51,17 @@
 
         public Album Update(Album old, AlbumViewModel updated)
         {
-            var albumToCreate = Mapper.Map<Album>(updated);
-
-            var performer = this.artistRepository.GetByName(updated.Performer);
-            var pieces = this.pieceRepository.GetRange(updated.Pieces);
-
-            albumToCreate.Artist = performer;
-            albumToCreate.Pieces = pieces;
-
-
             this.albumRepository.HardDelete(old);
-            this.albumRepository.Add(albumToCreate);
+            var created = this.CreateAlbum(updated);
 
-            return this.Get(albumToCreate.Name);
+            return created;
         }
 
         public void Delete(string name)
         {
             var album = this.Get(name);
 
-            this.albumRepository.Delete(album);
+            this.albumRepository.HardDelete(album);
         }
     }
 }

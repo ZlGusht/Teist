@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teist.Common.ViewModels;
-using Teist.Data.Managers;
 using Teist.Data.Models;
+using Teist.Services;
 
 namespace Teist.Web.Controllers
 {

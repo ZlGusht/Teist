@@ -5,7 +5,7 @@ using Teist.Common.ViewModels;
 using Teist.Data.Models;
 using Teist.Data.Repositories;
 
-namespace Teist.Services.Managers
+namespace Teist.Services
 {
     public class ArtistManager
     {
@@ -16,7 +16,7 @@ namespace Teist.Services.Managers
             this.artistRepository = artistRepository;
         }
 
-        public void Create(ArtistViewModel model)
+        public Artist Create(ArtistViewModel model)
         {
             Object genre;
             Enum.TryParse(typeof(Genre), model.Genre, out genre);
@@ -24,22 +24,15 @@ namespace Teist.Services.Managers
 
             var artist = new Artist()
             {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 Nickname = model.Nickname,
                 Genre = (Genre)genre
 
             };
 
-            if (model.FirstName != string.Empty)
-            {
-                artist.FirstName = model.FirstName;
-            }
-
-            if (model.LastName != string.Empty)
-            {
-                artist.LastName = model.LastName;
-            }
-
             this.artistRepository.Add(artist);
+            return artist;
         }
 
         public IEnumerable<Artist> GetAll()

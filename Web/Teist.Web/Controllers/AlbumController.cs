@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Teist.Common.ViewModels;
+    using Teist.Services;
 
     [Route("api/[controller]")]
     [ApiController]

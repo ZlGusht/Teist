@@ -10,7 +10,7 @@ namespace Teist.Data.Repositories
 
         }
 
-        public Album GetByName(string name)
+        public virtual Album GetByName(string name)
         {
             var all = this.All();
             return all.Where(e => e.Name == name).FirstOrDefault();

@@ -24,12 +24,13 @@
     using Newtonsoft.Json;
     using Teist.Common;
     using Teist.Common.Mapping;
+    using Teist.Common.ViewModels;
     using Teist.Data;
     using Teist.Data.Common.Repositories;
-    using Teist.Data.Managers;
     using Teist.Data.Models;
     using Teist.Data.Repositories;
     using Teist.Data.Seeding;
+    using Teist.Services;
     using Teist.Services.Messaging;
     using Teist.Web.Infrastructure.Middlewares.Auth;
 
@@ -137,7 +138,6 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //AutoMapperConfig.RegisterMappings(typeof(TodoItemViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())

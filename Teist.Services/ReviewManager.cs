@@ -7,7 +7,7 @@ using Teist.Common.ViewModels;
 using Teist.Data.Models;
 using Teist.Data.Repositories;
 
-namespace Teist.Services.Managers
+namespace Teist.Services
 {
     public class ReviewManager
     {

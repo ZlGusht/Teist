@@ -30,12 +30,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Web.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Services.Data", "Services\Teist.Services.Data\Teist.Services.Data.csproj", "{4D39C126-3FB5-4B26-B08C-1BF48EFFA23E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teist.Services.Tests", "Teist.Services.Tests\Teist.Services.Tests.csproj", "{0882577C-2A6B-4963-917B-7274BF3C0196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Services.Tests", "Teist.Services.Tests\Teist.Services.Tests.csproj", "{0882577C-2A6B-4963-917B-7274BF3C0196}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4B844ECB-E845-49A6-8B31-85E577933598} = {4B844ECB-E845-49A6-8B31-85E577933598}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teist.Services", "Teist.Services\Teist.Services.csproj", "{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Services", "Teist.Services\Teist.Services.csproj", "{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

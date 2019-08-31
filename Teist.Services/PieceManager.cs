@@ -6,7 +6,7 @@ using Teist.Common.ViewModels;
 using Teist.Data.Models;
 using Teist.Data.Repositories;
 
-namespace Teist.Services.Managers
+namespace Teist.Services
 {
     public class PieceManager
     {
@@ -19,7 +19,7 @@ namespace Teist.Services.Managers
             this.artistRepository = artistRepository;
         }
 
-        public void Create(PieceViewModel model)
+        public Piece Create(PieceViewModel model)
         {
             Object pieceType;
             Object Genre;
@@ -35,6 +35,8 @@ namespace Teist.Services.Managers
                 Genre = (Genre)Genre,
             };
             this.pieceRepository.Add(piece);
+
+            return piece;
         }
 
         public IEnumerable<Piece> GetAll()
