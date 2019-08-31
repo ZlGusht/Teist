@@ -31,7 +31,7 @@ namespace Teist.Services
             return this.reviewRepository.All();
         }
 
-        public void Create(ReviewViewModel model, ClaimsPrincipal principal)
+        public Review Create(ReviewViewModel model, ClaimsPrincipal principal)
         {
             var user = this.userRepository.All().Where(u => u.Email == principal.Identity.Name).FirstOrDefault();
             var review = new Review()
@@ -55,6 +55,7 @@ namespace Teist.Services
             }
 
             this.reviewRepository.Add(review);
+            return review;
         }
     }
 }

@@ -76,13 +76,14 @@ namespace Teist.Services.Tests
             var service = await this.CreateAlbumService(new List<Album>());
             var expected = new AlbumViewModel()
             {
-                Name = "TestName",
+                Name = "TestName1234",
                 Genre = Genre.Pop.ToString(),
                 Performer = "Test",
                 Pieces = new List<string>()
             };
             var created = service.CreateAlbum(expected);
             service.Delete(created.Name);
+            Assert.IsNull(service.Get(expected.Name));
         }
 
         private async Task<AlbumManager> CreateAlbumService(IEnumerable<Album> testData)

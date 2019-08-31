@@ -27,7 +27,7 @@ namespace Teist.Services
             return this.chartRepository.All();
         }
 
-        public void Create(ChartViewModel model)
+        public Chart Create(ChartViewModel model)
         {
             var chart = new Chart()
             {
@@ -70,6 +70,7 @@ namespace Teist.Services
             }
 
             this.chartRepository.Add(chart);
+            return chart;
         }
     }
 }
