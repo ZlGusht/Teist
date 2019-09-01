@@ -60,8 +60,11 @@
         public void Delete(string name)
         {
             var album = this.Get(name);
+            if (album != null)
+            {
+                this.albumRepository.HardDelete(album);
+            }
 
-            this.albumRepository.HardDelete(album);
         }
     }
 }

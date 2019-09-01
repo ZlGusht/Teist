@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Services.Tests", "Tei
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teist.Services", "Teist.Services\Teist.Services.csproj", "{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teist.Web.Tests", "Teist.Web.Tests\Teist.Web.Tests.csproj", "{88326B1D-9645-4899-A271-65505C1E0288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88326B1D-9645-4899-A271-65505C1E0288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88326B1D-9645-4899-A271-65505C1E0288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88326B1D-9645-4899-A271-65505C1E0288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88326B1D-9645-4899-A271-65505C1E0288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{4D39C126-3FB5-4B26-B08C-1BF48EFFA23E} = {516E002B-9E6E-4456-B7F6-EAA353966DE6}
 		{0882577C-2A6B-4963-917B-7274BF3C0196} = {7A731632-6714-44E2-A9E4-069EBA9E666C}
 		{14EB6CD7-24D6-4684-9D4E-BA4C466F9C65} = {516E002B-9E6E-4456-B7F6-EAA353966DE6}
+		{88326B1D-9645-4899-A271-65505C1E0288} = {7A731632-6714-44E2-A9E4-069EBA9E666C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73E88363-219C-4306-B5BA-B2233A158F7D}

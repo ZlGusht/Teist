@@ -28,7 +28,7 @@
         [HttpPost]
         public IActionResult Post([FromBody] ArtistViewModel artist)
         {
-            if (artist == null || !this.ModelState.IsValid)
+            if (artist == null || !ModelState.IsValid)
             {
                 return this.BadRequest();
             }
